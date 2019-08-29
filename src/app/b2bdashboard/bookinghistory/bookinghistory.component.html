@@ -1,0 +1,112 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+            <div class="tbnew">
+                <h1>Booking History</h1>
+                <div (click)="isCollapsed1 = !isCollapsed1"
+                     [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseExample1">
+                    <h5 class="fltrm">Filter <i class="fa fa-angle-down pull-right"></i></h5>
+                </div>
+                <div id="collapseExample1" [ngbCollapse]="isCollapsed1">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Product</label>
+                                        <select class="form-control">
+                                            <option>HOTEL</option>
+                                            <option>FLIGHT</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Booking Status</label>
+                                        <select class="form-control">
+                                            <option>CONFIRMED</option>
+                                            <option>CANCELLED</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Booking Status</label>
+                                        <select class="form-control">
+                                            <option>CONFIRMED</option>
+                                            <option>CANCELLED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4"><input class="bt_n" type="submit" value="Search Booking"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tbl_m">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Sl.No</th>
+                                <th>Product</th>
+                                <th>Traveller</th>
+                                <th>Confirmation No.</th>
+                                <th>Booking Id.</th>
+                                <th>Payment Status</th>
+                                <th>Booking Date</th>
+                                <th>Booking Status</th>
+                                <th>Currency</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let item of bookHistory; index as i">
+                                <td>{{i+1}}</td>
+                                <td *ngIf="item.product_name === 'FLIGHT' " align="center"><i class="fa fa-plane icfa"></i>
+                                    <small>Flight</small>
+                                </td>
+
+                                <td *ngIf="item.product_name === 'HOTEL' " align="center"><i class="fa fa-building-o icfa"></i>
+                                    <small>Hotel</small>
+                                </td>
+
+                                <td *ngIf="item.product_name === 'CAR' " align="center"><i class="fa fa-dashboard icfa"></i>
+                                    <small>Car</small>
+                                </td>
+
+                                <td>{{item.leadpax}}</td>
+                                <td>{{item.parent_pnr_no}}</td>
+                                <td [innerHTML]="item.pnr_no"></td>
+                                <td>{{item.booking_status}}</td>
+                                <td>{{item.booking_time | date : 'yyyy-MM-dd'}}</td>
+                                <td>{{item.ticketing_status}}</td>
+                                <td>$</td>
+                                <td>350</td>
+                                <td>
+                                    <a href="javascript:void(0);" class="actn"> <i class="fa fa-th-list"
+                                                                                   title="View Bookings"></i></a>
+                                    <a href="javascript:void(0);" class="actn"> <i class="fa fa-ticket"
+                                                                                   title="Print Voucher"></i></a>
+                                    <a href="javascript:void(0);" class="actn"> <i class="fa fa-money"
+                                                                                   title="Print Invoice"></i></a>
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

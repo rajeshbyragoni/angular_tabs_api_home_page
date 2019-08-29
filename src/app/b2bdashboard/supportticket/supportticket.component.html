@@ -1,0 +1,144 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+            <div role="tabpanel" class="tab-pane" id="tab7">
+                <div class="tbnew">
+                    <div *ngIf="showMsg === 'true' " class="alert alert-success" role="alert">
+                        Sucessfully added
+                    </div>
+                    <div *ngIf="showMsg === 'false' " class="alert alert-danger" role="alert">
+                        Unable to create  
+                    </div>
+                    <h1>Support Ticket</h1>
+                    <div class="spttckt">
+                        <ul class="nav nav-tabs">
+                            <li><a class="active" href="#supt1" data-toggle="tab">Index </a></li>
+                            <li><a href="#supt2" data-toggle="tab">Sent </a></li>
+                            <li><a href="#supt3" data-toggle="tab">Close </a></li>
+                            <li><a href="#supt4" data-toggle="tab">New Ticket </a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="supt1">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>SL No</th>
+                                            <th>Ticket ID</th>
+                                            <th>Date</th>
+                                            <th>Subject</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody *ngIf="support_pending > 0">
+                                            <tr *ngFor="let supen of support_pending; index as i">
+                                                <td>{{ i+1 }}</td>
+                                                <td>{{supen.support_ticket_id}}</td>
+                                                <td>{{supen.created_time | date:'dd/MM/yyyy'}}</td>
+                                                <td>{{supen.subject}}</td>
+                                                <td><a>View</a></td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="!support_pending !== true">
+                                            <tr></tr>
+                                            <tr>No Record Found</tr>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="supt2">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>SL No</th>
+                                            <th>Ticket ID</th>
+                                            <th>Date</th>
+                                            <th>Subject</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let sucl of support_sent; index as i">
+                                            <td>{{ i+1 }}</td>
+                                            <td>{{sucl.support_ticket_id}}</td>
+                                            <td>{{sucl.created_time | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{sucl.subject}}</td>
+                                            <td><a>View</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="supt3">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>SL No</th>
+                                            <th>Ticket ID</th>
+                                            <th>Date</th>
+                                            <th>Subject</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let sucl of support_close; index as i">
+                                            <td>{{ i+1 }}</td>
+                                            <td>{{sucl.support_ticket_id}}</td>
+                                            <td>{{sucl.created_time | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{sucl.subject}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="supt4">
+                                <div class="col-md-6 nopad mt15">
+                                    <form [formGroup]="suportForm">
+                                        <div class="form-group">
+                                            <label>Subject *</label>
+                                            <select class="form-control" formControlName="subject" #subject>
+                                                <option value="" selected>Subject</option>
+                                                <option *ngFor="let sts of support_ticket_subject" value="{{sts.support_ticket_subject_id}}">{{sts.support_ticket_subject_value}}</option>
+                                            </select>
+                                            <div *ngIf="suportForm.controls['subject'].invalid && (suportForm.controls['subject'].dirty ||  suportForm.controls['subject'].touched)" class="text-danger">
+                                                <div *ngIf="suportForm.controls['subject'].errors.required">
+                                                    Subject is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>File * --<b>{{fileName}}</b></label>
+                                            <button class="btn btn-info btn-block" type="button" (click)="fileInput.click()">
+                                                <i class="fa fa-upload"></i>&nbsp;&nbsp;
+                                                <span class="bold">Upload Photo</span></button>
+                                            <input type="file" (change)="fileChange($event)" #fileInput formControlName="file_name" style="display: none;"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Message *</label>
+                                            <textarea class="form-control" rows="5" formControlName="message" #message></textarea>
+                                            <div *ngIf="suportForm.controls['message'].invalid && (suportForm.controls['message'].dirty ||  suportForm.controls['message'].touched)" class="text-danger">
+                                                <div *ngIf="suportForm.controls['message'].errors.required">
+                                                    Message is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="bt_n" (click)="suportFormSubmit(subject.value, message.value)" [disabled]="suportForm.pristine || suportForm.invalid || !disableBtn">add Ticket </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

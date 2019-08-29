@@ -1,0 +1,361 @@
+<app-header></app-header>
+<div class="mn_all">
+    <div class="mn bg4">
+        <div class="container">
+            <div class="row">
+                <!-- clm8 start here -->
+                <div class="col-md-9">
+                    <form id="TravellerForm">
+                        <input type="hidden" name="cid" value="{{ cids }}">
+                        <input type="hidden" name="secdata" value="{{ secdata }}">
+                        <input type="hidden" name="total" value="{{ total }}"/>
+                        <input type="hidden" name="extra_markup" value="{{''}}"/>
+                        <input type="hidden" name="extra_markup_type" value="{{''}}"/>
+                        <input type="hidden" name="code" value="{{ code }}"/>
+
+                        <div class="clm100_mn">
+                            <h3>Traveller Details</h3>
+                            <div class="col-md-12 mtp10" *ngIf="product_name === 'HOTEL' ">
+                                <input type="hidden" value="{{product_name}}" name="product_name" class="product_name">
+                                <div class="col-md-12 nopad" *ngFor='let key of rooms | demoNumber'>
+                                    <h4 class="text-heaing"> Room{{key + 1}}</h4>
+                                    <div *ngFor='let num of adult[key] | demoNumber'>
+                                        <!-- <p><b>Adult: {{num+1}}</b></p> -->
+                                        <div class="col-md-1">
+                                            <i class="fa fa-user fa-2x" style="padding-top: 20px"></i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Title <span class="text-danger">*</span></label>
+                                                        <select class="form-control title" name="a_gender{{cid}}[{{key}}][{{num}}]">
+                                                            <option>Mr</option>
+                                                            <option>Mrs</option>
+                                                            <option>Miss</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>First Name <span class="text-danger">*</span></label>
+                                                        <input class="form-control firstName" name="first_name{{cid}}[{{key}}][{{num}}]" placeholder="Please Enter First Name" type="text" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Last Name <span class="text-danger">*</span></label>
+                                                        <input class="form-control lastName" name="last_name{{cid}}[{{key}}][{{num}}]" placeholder="Please Enter Last Name" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngFor='let meut of child[key] | demoNumber'>
+                                        <div class="col-md-1">
+                                            <i class="fa fa-child fa-2x" style="padding-top: 20px"></i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Title <span class="text-danger">*</span></label>
+                                                        <select class="form-control title" name="c_gender{{cid}}[{{key}}][{{meut}}">
+                                                            <option>Mr</option>
+                                                            <option>Mrs</option>
+                                                            <option>Miss</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>First Name <span class="text-danger">*</span></label>
+                                                        <input class="form-control firstName" name="cfirst_name{{cid}}[{{key}}][{{meut}}]" placeholder="Please Enter First Name" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Last Name <span class="text-danger">*</span></label>
+                                                        <input class="form-control lastName" name="clast_name{{cid}}[{{key}}][{{meut}}]" placeholder="Please Enter Last Name" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mtp10" *ngIf="product_name === 'TOUR' ">
+                                <input type="hidden" value="{{product_name}}" name="product_name" class="product_name">
+                                <div class="col-md-12 nopad" *ngFor='let key of cart.adult | demoNumber'>
+                                    <p class="text-heaing"> Adult: {{key + 1}}</p>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-user fa-2x" style="padding-top: 20px"></i>
+                                    </div>
+
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Title <span class="text-danger">*</span></label>
+                                                    <select class="form-control title" name="a_gender{{cid}}[{{key}}]">
+                                                        <option value="Mr">Mr</option>
+                                                        <option value="Mrs">Mrs</option>
+                                                        <option value="Miss">Miss</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>First Name <span class="text-danger">*</span></label>
+                                                    <input class="form-control firstName" name="first_name{{cid}}[{{key}}]" placeholder="Please Enter First Name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Last Name <span class="text-danger">*</span></label>
+                                                    <input class="form-control lastName" name="last_name{{cid}}[{{key}}]" placeholder="Please Enter Last Name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Email <span class="text-danger">*</span></label>
+                                                    <input class="form-control emailC" name="email{{cid}}[{{key}}]" placeholder="Please Enter Email" type="text">
+                                                </div>
+                                            </div>
+                                            <div *ngIf="key == 0">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Address <span class="text-danger">*</span></label>
+                                                        <input class="form-control addressC" name="address{{cid}}[{{key}}]" placeholder="Please Enter Address" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Nationality <span class="text-danger">*</span></label>
+                                                        <select class="form-control nationalityC" name="nationality{{cid}}[{{key}}]" required>
+                                                            <option value="">--Select--</option>
+                                                            <option *ngFor="let country of countryList" value="{{country['country_code']}}">{{country['country_name']}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="cart.child > 0">
+                                    <div class="col-md-12 nopad" *ngFor='let key of cart.child | demoNumber'>
+                                        <p class="text-heaing"> Child: {{key + 1}}</p>
+                                        <div class="col-md-1">
+                                            <i class="fa fa-user fa-2x" style="padding-top: 20px"></i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Title <span class="text-danger">*</span></label>
+                                                        <select class="form-control title" name="a_gender{{cid}}[{{key}}]">
+                                                            <option value="Mr">Mr</option>
+                                                            <option value="Mrs">Mrs</option>
+                                                            <option value="Miss">Miss</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>First Name <span class="text-danger">*</span></label>
+                                                        <input class="form-control firstName" name="cfirst_name{{cid}}[{{key}}]" placeholder="Please Enter First Name" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Last Name <span class="text-danger">*</span></label>
+                                                        <input class="form-control lastName" name="clast_name{{cid}}[{{key}}]" placeholder="Please Enter Last Name" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clm100_mn">
+                            <h3>Address Details</h3>
+                            <div class="col-md-12 mtp10">
+                                <div class="col-md-12 nopad">
+                                    <div class="col-md-1">
+                                        <img src="assets/img/usr1.jpg">
+                                    </div>
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label> Salutation </label>
+                                                    <select class="form-control" name="salutation">
+                                                     <option value="Mr">Mr</option>
+                                                     <option value="Mrs">Mrs</option>
+                                                     <option value="Miss">Miss</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label>First Name </label>
+                                                    <input class="form-control firstName" name="first_name" placeholder="First Name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label>Last Name</label>
+                                                    <input class="form-control lastName" name="last_name" placeholder="Last Name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Email Address</label>
+                                                    <input class="form-control emailAddress" name="email" placeholder="Email Address" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label> Country </label>
+                                                    <select class="form-control countryD" name="country">
+                                                        <option value="">Select Country</option>
+                                                        <option *ngFor="let country of countryList" value="{{country.currency_code}}">{{country.country_name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control phoneNumber numberOnly" name="mobile" placeholder="Phone Number" name="phoneNumber">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clm100_mn">
+                            <h3>Payment Information</h3>
+                            <div class="col-md-12 mtp10">
+                                <div class="col-md-3">
+                                    <input class="form-control-payment" type="radio" name="payment_method" value="DEPOSIT"> Deposit 
+                                </div>
+                                <div class="col-md-3">
+                                    <input class="form-control-payment" type="radio" name="payment_method" value="PaymentGateway"> PaymentGateway<br>
+                                </div>
+                                <div class="col-md-3 errorPay" style="display: none;">
+                                    <span class="tol">This field is required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mtp10">
+                                <div class="row"  id="cardDetails" style="display: none;">
+                                    <div class="col-md-1">
+                                        <img src="assets/img/hd1.jpg">
+                                    </div>
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Card Number</label>
+                                                    <input class="form-control numberOnly" name="card_no" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>&nbsp;</label>
+                                                    <div><img src="assets/img/visa.jpg" alt="" class="crd"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Card Holder Name </label>
+                                                    <input class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Card Expiry Month and year</label>
+                                                    <input class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Card Security Code</label>
+                                                    <input class="form-control " type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>&nbsp;</label>
+                                                    3 digit Number from your card
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="checkbox">
+                                                    <label class="chk"> Create Traveler account
+                                                        <small>(password will be send to your e-mail)</small>
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12 nopad">
+                                                <button class="bt_n goldbg clickContinue" (click)="clickContinue()"> Continue </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- clm8 end here -->
+                <!-- clm4 start here -->
+                <div class="col-md-3">
+                    <div class="clm100_sd">
+                        <h4>Fare Details</h4>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">Sub Total</div>
+                                    <div class="col-md-6 goldclr"> USD {{ Totall }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">Discount</div>
+                                    <div class="col-md-6 goldclr"> - </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6"><span class="tol">Total Price</span></div>
+                                    <div class="col-md-6 goldclr"><span class="tol">USD {{ Totall }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- clm4 end here -->
+                <div class="gap"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

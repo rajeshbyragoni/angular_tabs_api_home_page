@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+            <div role="tabpanel" class="tab-pane" id="tab8">
+                <div class="tbnew">
+                    <h1>Newsletter</h1>
+                    <div class="col-md-12">
+                        <label class="chk"> Check this box to receive to to newsletter feed.
+                            <input *ngIf="checkBox === 1" type="checkbox" checked="checked" (click)="updateNotify(0)">
+                            <input *ngIf="checkBox !== 1" type="checkbox"  (click)="updateNotify(1)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

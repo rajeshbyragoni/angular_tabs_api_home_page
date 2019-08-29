@@ -1,0 +1,217 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+
+            <div role="tabpanel" class="tab-pane" id="tab3">
+                <div class="tbnew">
+                    <div (click)="isCollapsed2 = !isCollapsed2"
+                    [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseExample2">
+                    <h5 class="fltrm">Filter <i class="fa fa-angle-down pull-right"></i></h5>
+                </div>
+                <div id="collapseExample2" [ngbCollapse]="isCollapsed2">
+                    <div class="card">
+                        <div class="card-body">
+                         <form [formGroup]="depositForm">
+                            <div class="row">
+                                <div class="col-md-5">
+                                   <input value="banking" class="banking_types" name="banking_types" type="hidden" #banking_types>
+                                   
+                                   <div class="form-group">
+                                    <label>Deposit Through</label>
+                                    <select class="form-control banking_type " name="banking_type" formControlName="banking_type" #banking_type>
+                                        <option value=""> -- Banking Type --</option>
+                                        <option value="banking">Banking</option>
+                                        <option value="cheque">Cheque</option>
+                                        <option value="credit">Credit Card</option>
+                                        <option value="letter_of_credit">Letter of credit</option>
+                                    </select>
+                                    <div *ngIf="depositForm.controls['banking_type'].invalid && (depositForm.controls['banking_type'].dirty ||  depositForm.controls['banking_type'].touched)" class="text-danger">
+                                        <div *ngIf="depositForm.controls['banking_type'].errors.required">
+                                            banking type is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="cheque_fields">
+                                    <div class="form-group ">
+                                        <label>Cheque number *</label>
+                                        <input class="form-control" formControlName="check_number" name="check_number"
+                                        placeholder="Cheque number" type="text" #check_number>
+                                        <div *ngIf="depositForm.controls['check_number'].invalid && (depositForm.controls['check_number'].dirty ||  depositForm.controls['check_number'].touched)" class="text-danger">
+                                            <div *ngIf="depositForm.controls['check_number'].errors.required">
+                                                check_number is required.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div> 
+
+
+                                <div class="banking_fields">
+                                    <div class="form-group ">
+                                        <label>Bank Name *</label>
+                                        <input class="form-control" formControlName="bank_name" name="bank_name"
+                                        placeholder="Bank Name" type="text" #bank_name>
+                                        <div *ngIf="depositForm.controls['bank_name'].invalid && (depositForm.controls['bank_name'].dirty ||  depositForm.controls['bank_name'].touched)" class="text-danger">
+                                            <div *ngIf="depositForm.controls['bank_name'].errors.required">
+                                                bank name is required.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label>Bank Branch *</label>
+                                        <input class="form-control" formControlName="bank_branch" name="bank_branch"
+                                        placeholder="Bank Branch" type="text" #bank_branch>
+                                        <div *ngIf="depositForm.controls['bank_branch'].invalid && (depositForm.controls['bank_branch'].dirty ||  depositForm.controls['bank_branch'].touched)" class="text-danger">
+                                            <div *ngIf="depositForm.controls['bank_branch'].errors.required">
+                                                bank branch is required.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label>Bank City *</label>
+                                        <input class="form-control" formControlName="bank_city" name="bank_city"
+                                        laceholder="Bank City" type="text" #bank_city>
+                                        <div *ngIf="depositForm.controls['bank_city'].invalid && (depositForm.controls['bank_city'].dirty ||  depositForm.controls['bank_city'].touched)" class="text-danger">
+                                            <div *ngIf="depositForm.controls['bank_city'].errors.required">
+                                                bank city is required.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label>Amount *</label>
+                                    <input class="form-control" formControlName="amount"  name="amount" placeholder="Amount"
+                                    type="text" #amount>
+                                    <div *ngIf="depositForm.controls['amount'].invalid && (depositForm.controls['amount'].dirty ||  depositForm.controls['amount'].touched)" class="text-danger">
+                                        <div *ngIf="depositForm.controls['amount'].errors.required">
+                                            amount is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gap gap-small"></div>
+
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-5">
+
+
+                                <div class="form-group ">
+                                    <label>Currency *</label>
+                                    <input class="form-control" formControlName="currency" name="currency" placeholder="Currency"
+                                    readonly="" type="text" #currency>
+                                    <div *ngIf="depositForm.controls['currency'].invalid && (depositForm.controls['currency'].dirty ||  depositForm.controls['currency'].touched)" class="text-danger">
+                                        <div *ngIf="depositForm.controls['currency'].errors.required">
+                                            currency is required.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group ">
+                                    <label>Date *</label>
+                                    <input class="form-control" name="bank_date" formControlName="bank_date" type="text" #bank_date>
+                                    <div *ngIf="depositForm.controls['bank_date'].invalid && (depositForm.controls['bank_date'].dirty ||  depositForm.controls['bank_date'].touched)" class="text-danger">
+                                        <div *ngIf="depositForm.controls['bank_date'].errors.required">
+                                            bank date is required.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group ">
+                                    <label>Remarks </label>
+                                    <textarea class="form-control" placeholder="" formControlName="remarks" name="remarks"
+                                    rows="3" #remarks></textarea>
+                                    <div *ngIf="depositForm.controls['remarks'].invalid && (depositForm.controls['remarks'].dirty ||  depositForm.controls['remarks'].touched)" class="text-danger">
+                                        <div *ngIf="depositForm.controls['remarks'].errors.required">
+                                            remarks is required.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group ">
+                                 
+                                    <label>userfile * --<b>{{profileName}}</b></label>
+                                    <button class="btn btn-info btn-block" type="button" #upload (click)="fileInput.click()">
+                                        <i class="fa fa-upload"></i>&nbsp;&nbsp;
+                                        <span class="bold">Upload Photo</span></button>
+                                        <input type="file" name="userfile" (change)="fileChange($event)" #fileInput
+                                        formControlName="userfile" style="display: none;"/>
+
+                                        <div *ngIf="depositForm.controls['userfile'].invalid && (depositForm.controls['userfile'].dirty ||  depositForm.controls['userfile'].touched)" class="text-danger">
+                                            <div *ngIf="depositForm.controls['userfile'].errors.required">
+                                                user file is required.
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+
+                                    <button type="submit" class="bt_n" value="Submit" (click)="depositClick(banking_type.value,check_number.value, bank_name.value, bank_branch.value, bank_city.value, amount.value, currency.value, bank_date.value, remarks.value, banking_types.value)">Add Deposit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tbnew">
+                <h1 class="blns">
+                    <button class="btn btn-primary pull-right">Balance Amount : 10936.26 US$</button>
+                </h1>
+                <div class="tbl_m">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Service Charge</th>
+                                    <th>Remarks</th>
+                                    <th>Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let deposits of deposit; index as i">
+                                    <td>{{i+1}}</td>
+                                    <td>{{deposits.deposit_number}}</td>
+                                    <td>{{deposits.deposited_date}}</td>
+                                    <td>{{deposits.last_credit}}</td>
+                                    <td> {{deposits.last_debit}}</td>
+                                    <td>{{deposits.remarks}}</td>
+
+                                    <td>{{deposits.status}}</td>
+                                </tr>
+
+                                
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>

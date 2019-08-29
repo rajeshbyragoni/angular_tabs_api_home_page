@@ -1,0 +1,488 @@
+<app-header></app-header>
+<div class="mn_all">
+    <div class="mn bg4">
+        <div class="container" *ngIf="loading == true">
+            <div class="col-md-2 col-md-offset-5">
+                <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+            </div>
+        </div>
+        <div class="container" *ngIf="loading == false">
+            <header class="booking-item-header">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2 class="lh1em">{{ packageDetail.package_name}}</h2>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="tabbable booking-details-tabbable">
+                        <ul class="nav nav-tabs myTabd" id="myTab">
+                            <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Photos</a>
+                            </li>
+                            <li><a href="#google-map-tab" data-toggle="tab"><i class="fa fa-map-marker"></i>On the
+                                Map</a>
+                            </li>
+                            <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-signal"></i>Rating</a>
+                            </li>
+                            <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-asterisk"></i>Facilities</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab-1">
+                                <div class="tb_cnt">
+                                    <div class="dts_img">
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                                <div *ngFor="let img of otherImage; index as i"
+                                                     class="item {{ i === 0 ? 'active' : '' }}">
+                                                    <div class="bg-holder full">
+                                                        <div class="bg-blur"><img
+                                                                src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/packages/{{img['other_image']}}"
+                                                                alt="{{i}}" style="height: 350px"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="google-map-tab">
+                                <div class="tb_cnt">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12744006.140328264!2d26.154410807001664!3d38.75614310794431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b0155c964f2671%3A0x40d9dbd42a625f2a!2sTurkey!5e0!3m2!1sen!2sin!4v1552912288609"
+                                            width="550" height="300" frameborder="0" style="border:0"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-3">
+                                <div class="mt201">
+                                    <div class="col-md-8 nopad">
+                                        <h4 class="lhem">Traveler rating</h4>
+                                        <ul class="list booking-item-raiting-list">
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Exellent</div>
+                                                <div class="booking-item-raiting-list-bar">
+                                                    <div style="width:86%;"></div>
+                                                </div>
+                                                <div class="booking-item-raiting-list-number">1372</div>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Very Good</div>
+                                                <div class="booking-item-raiting-list-bar">
+                                                    <div style="width:7%;"></div>
+                                                </div>
+                                                <div class="booking-item-raiting-list-number">62</div>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Average</div>
+                                                <div class="booking-item-raiting-list-bar">
+                                                    <div style="width:3%;"></div>
+                                                </div>
+                                                <div class="booking-item-raiting-list-number">28</div>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Poor</div>
+                                                <div class="booking-item-raiting-list-bar">
+                                                    <div style="width:2%;"></div>
+                                                </div>
+                                                <div class="booking-item-raiting-list-number">9</div>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Terrible</div>
+                                                <div class="booking-item-raiting-list-bar">
+                                                    <div style="width:1%;"></div>
+                                                </div>
+                                                <div class="booking-item-raiting-list-number">9</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 nopad">
+                                        <h4 class="lhem">Summary</h4>
+                                        <ul class="list booking-item-raiting-summary-list">
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Sleep</div>
+                                                <ul class="icon-group booking-item-rating-stars">
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Location</div>
+                                                <ul class="icon-group booking-item-rating-stars">
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o text-gray"></i>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Service</div>
+                                                <ul class="icon-group booking-item-rating-stars">
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Clearness</div>
+                                                <ul class="icon-group booking-item-rating-stars">
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <div class="booking-item-raiting-list-title">Rooms</div>
+                                                <ul class="icon-group booking-item-rating-stars">
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-smile-o"></i>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-4">
+                                <div class="row mt201">
+                                    <div class="col-md-4">
+                                        <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                            <li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span>
+                                            </li>
+                                            <li><i class="im im-parking"></i><span class="booking-item-feature-title">Parking</span>
+                                            </li>
+                                            <li><i class="im im-plane"></i><span class="booking-item-feature-title">Airport Transport</span>
+                                            </li>
+                                            <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span>
+                                            </li>
+                                            <li><i class="im im-fitness"></i><span class="booking-item-feature-title">Fitness Center</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                            <li><i class="im im-pool"></i><span
+                                                    class="booking-item-feature-title">Pool</span>
+                                            </li>
+                                            <li><i class="im im-spa"></i><span
+                                                    class="booking-item-feature-title">SPA</span>
+                                            </li>
+                                            <li><i class="im im-restaurant"></i><span
+                                                    class="booking-item-feature-title">Restaurant</span>
+                                            </li>
+                                            <li><i class="im im-wheel-chair"></i><span
+                                                    class="booking-item-feature-title">Wheelchair Access</span>
+                                            </li>
+                                            <li><i class="im im-business-person"></i><span
+                                                    class="booking-item-feature-title">Business Center</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                            <li><i class="im im-children"></i><span class="booking-item-feature-title">Children Activites</span>
+                                            </li>
+                                            <li><i class="im im-casino"></i><span class="booking-item-feature-title">Casino &amp; Gambling</span>
+                                            </li>
+                                            <li><i class="im im-bar"></i><span class="booking-item-feature-title">Bar/Lounge</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="clm100_sd">
+                        <h4 class="head_hotel">Price Summary</h4>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">Sub Total</div>
+                                    <div class="col-md-6 goldclr">{{ 'USD' }} {{ packageDetail['amount'] | mathRound }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">Discount</div>
+                                    <div class="col-md-6 goldclr">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6"><span class="tol">Total Price</span></div>
+                                    <div class="col-md-6 goldclr"><span
+                                            class="tol">{{ 'USD' }} {{ packageDetail['amount'] | mathRound }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row" *ngIf="loading == false">
+            <div class="container">
+                <ul class="nav nav-pills ctheming">
+                    <li><a data-toggle="pill" href="#home">Package Details</a></li>
+                    <li><a data-toggle="pill" href="#menu1">Package Itinerary</a></li>
+                    <li><a data-toggle="pill" href="#menu2">Package Policies</a></li>
+                    <li class="active"><a data-toggle="pill" href="#menu3">Package Pricing</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <br>
+                    <div id="home" class="tab-pane fade">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/packages/{{ packageDetail.images }}"
+                                         alt="{{packageDetail.package_name}}" style="height: 150px">
+                                </div>
+                                <div class="col-md-4">
+                                    <p>{{ packageDetail.package_name }}</p>
+                                    <p>{{ packageDetail.package_type }}</p>
+                                    <p>{{ packageDetail.package_description }}</p>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <div *ngFor="let days of package_days; index as i">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span class="num_days">Day &nbsp;{{ i }}</span>
+                                    <img src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/package_duration_images/{{ days['image'] }}"
+                                         alt="{{ days['image'] }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="itm_head">{{ days['title'] }}</span>
+                                    <p *ngIf="days['location_city_name']?.length > 0">
+                                        City: {{ days['location_city_name'] }}</p>
+                                    <p>Location : {{ days['area'] }}</p>
+                                    <p>Description :{{ days['description'] }}></p>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <table>
+                            <tr>
+                                <td width="15%"><b>Additional Info:</b></td>
+                                <td> {{ packageDetail.additional_info}}</td>
+                            </tr>
+                            <tr>
+                                <td width="15%"><b>Cancel policy: </b></td>
+                                <td>{{ packageDetail.cancel_policy}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="menu3" class="tab-pane fade in active">
+                        <div class="container">
+                            <div class="row">
+                                <form name="packagesAddToCart">
+                                    <div class="htdes">
+                                        <div class="row">
+                                            <table class="tbl" cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td><strong> Package type </strong></td>
+                                                    <td>:</td>
+                                                    <td>&nbsp;&nbsp; {{ packageDetail.package_type }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong> Duration </strong></td>
+                                                    <td>:</td>
+                                                    <td> &nbsp;&nbsp;{{ packageDetail.duration }} Days</td>
+                                                </tr>
+                                                <tr *ngIf="packageDetail.max_passanger != 0">
+                                                    <td><strong> Maximum Guests </strong></td>
+                                                    <td>:</td>
+                                                    <td> &nbsp;&nbsp;{{ packageDetail.max_passanger }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <p>&nbsp;</p>
+                                        </div>
+                                        <div class="row">
+                                            <input type="hidden" id="package_id" value="{{ packageDetail.package_id }}">
+                                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                                <div class="marginbotom10"><span class="formlabel">Travel Date</span>
+                                                    <div class="relativemask"><span class="maskimg caln"></span>
+                                                        <input type="text" value="{{ packageDetail.trip_date }}" aria-required="true" name="travel_date" id="travel_date"
+                                                               class="forminput form-control" placeholder="Travel Date" readonly required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                                <div class="marginbotom10"><span class="formlabel">Adult</span>
+                                                    <div class="relativemask"><span class="maskimg caln"></span>
+                                                        <select aria-required="true" class="reset_room calculate form-control adult_count"
+                                                                id="adult_count" name="adult_count" [attr.data.val]="1 * packageDetail.amount | mathRound " required>
+                                                            <option *ngFor='let key of packageDetail.max_passanger | demoNumber' value="{{key}}">{{key}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="packageDetail.duration > 1">
+                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                    <span class="formlabel"> Nationality</span>
+                                                    <div class="selectedwrap">
+                                                        <select required name="nationality" id="nationality" class="fetch_hotel mySelectBoxClass flyinputsnor valid form-control"
+                                                                aria-required="true" aria-invalid="false">
+                                                            <option *ngFor="let country of countryArry;" value="{{ country.iso_code }}">{{ country.country_name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <span class="formlabel">&nbsp;</span>
+                                                    <strong class="mrt">
+                                                        Total Room Price : USD  <span class="hotel_room_price"></span>
+                                                        <input type="hidden" id="hotel_room_price" name="hotel_room_price"/></strong>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-12">
+                                                    <span class="formlabel">Total Price</span>
+                                                    <div class="selectedwrap">
+                                                        <div class="total_div" style="font-size:18px;">USD <span class="total_price">{{ 1 * packageDetail.amount | mathRound }}</span>
+                                                            <input type="hidden" name="single_price" id="single_price" value="{{ packageDetail.amount }}">
+                                                            <input type="hidden" name="total_price" id="total_price" value=" {{ packageDetail.amount }} ">
+                                                            <input type="hidden" name="total_price_org" id="total_price_org" value=" {{ 1 * packageDetail.amount | mathRound }} ">
+                                                            <input type="hidden" name="org_guest" id="org_guest" value="{{ packageDetail.max_passanger }}">
+                                                            <input type="hidden" name="daydiff" id="daydiff" value=" {{ packageDetail.duration }}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="packageDetail.duration > 1">
+                                                <div class="box_o" *ngFor="let day of package_days; let i = index " style="border-bottom: 1px solid gainsboro">
+
+                                                    <table class="tbl" cellpadding="0" cellspacing="0" border="0">
+
+                                                        <tbody>
+                                                        <tr>
+                                                            <td colspan="3"><strong> Day  {{ i + 1  }}</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong> Room Price </strong></td>
+                                                            <td>:</td>
+                                                            <td> {{ 'USD' }} <span class="hotel_room_price{{i}}"> </span></td>
+                                                            <input type="hidden" id="hotel_room_price{{i}}">
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong> City </strong></td>
+                                                            <td>:</td>
+                                                            <td> {{ day['location_city_name'] }}</td>
+
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="clearfix"></div>
+                                                    <p>&nbsp;</p>
+                                                    <div class="col-md-4">
+                                                        <div class="marginbotom10"> <span class="formlabel"> Hotel Name </span>
+                                                            <div class="selectedwrap">
+                                                                <select required name="hotel_code[]" id='hotel_code{{i}}' [attr.data.did]="i"
+                                                                        class="calculate hotel_name_select rm_count_room mySelectBoxClass flyinputsnor valid form-control"
+                                                                        aria-required="true" aria-invalid="false">
+                                                                    <option value=''>Please select hotel name</option>
+                                                                    <option *ngFor=" let hot of day['hotels']" value="{{ hot['hotel_code']}}">{{ hot['hotel_name']}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" id="city" name="city" value="{{request_data.city}}">
+                                                    <div class="col-md-1 rmode" style="display: none">
+                                                        <div class="marginbotom10">
+                                                            <span class="formlabel"> Rooms</span>
+                                                            <div class="selectedwrap">
+                                                                <select name="rooms[{{i}}][]" id="n_rooms{{i}}" class="form-control rm_count_room no_of_rooms mySelectBoxClass flyinputsnor valid"
+                                                                        [attr.data.did]='i' aria-required="true" aria-invalid="false">
+                                                                    <option *ngFor="let pack of packageDetail.max_passanger | demoNumber" value="{{pack}}">{{pack}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 rmode" style="display: none">
+                                                        <div class="room_adult_count_box{{i}} flexible_room">
+                                                            <span class="formlabel">Adult </span>
+                                                            <div class="selectedwrap">
+                                                                <select name="adult[{{i}}][]" id="adult_c{{i}}" class="form-control ad_count_room mySelectBoxClass flyinputsnor valid"
+                                                                        [attr.data.did]='i' aria-required="true" aria-invalid="false">
+                                                                    <option *ngFor="let guest of packageDetail.max_passanger | demoNumber" value="{{guest}}">{{guest}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" id="city{{i}}" name="city" value="{{ day['location_city_name']}}">
+                                                    <input type="hidden" id="checkin{{i}}" value="{{day['cin']}}">
+                                                    <input type="hidden" id="checkout{{i}}" value="{{day['cout']}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

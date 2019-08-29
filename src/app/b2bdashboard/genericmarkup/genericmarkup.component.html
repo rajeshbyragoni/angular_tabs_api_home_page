@@ -1,0 +1,119 @@
+<app-header></app-header>
+<div class="dashboard">
+	<div class="container">
+		<div class="col-md-3">
+			<app-b2bsidebar></app-b2bsidebar>
+		</div>
+
+		<div class="col-md-9">
+			<div class="tbnew">
+				<div class="col-md-12">
+					<div *ngIf="showMsg === 'true' " class="alert alert-success" role="alert">
+						Sucessfully added
+					</div>
+					<div *ngIf="showMsg === 'false' " class="alert alert-danger" role="alert">
+						Unable to create  
+					</div>
+					<h4>Generic Markup</h4>
+					<div class="tabbable">
+						<ul class="nav nav-tabs" id="myTab">
+							<li class=""><a href="#add_amrkup" data-toggle="tab">Add Markup</a>
+							</li>
+							<li class="active"><a href="#view_markup" class="view ghytty" data-toggle="tab">View Markup</a>
+							</li>
+
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="view_markup">
+								<p class="mt10">
+								</p><table class="table table-bordered table-striped table-booking-history">
+									<thead>
+										<tr>
+											<th>Sl.No</th>
+											<th>Product</th>
+											<th>Markup</th>
+											<th>Markup Type</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let gema of general_markup; index as i">
+											<td>{{i+1}}</td>
+											<td>{{gema.product_name}}</td>
+											<td>{{gema.markup_value}}</td>
+											<td>{{gema.amount_type}}</td>
+											<td><a href="javascript:void(0);" class="markup" id="1"> 
+												<i class="fa fa-spinner fa-spin" id="update_markup_spinner_1" style="display:none;"></i>
+												<i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+											</a>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+							<p></p>
+						</div>
+
+
+						<div class="tab-pane fade" id="add_amrkup">
+							<p class="mt10">
+							</p><div class="col-md-8">
+								<form [formGroup]="genericForm">
+									<div class="form-group">
+										<label>Product *</label>
+										<select name="product_id" class="form-control" formControlName="product_id" #product_id>
+											<option value="">--Choose Product--</option>
+											<option value="1">FLIGHT</option>
+											<option value="2">HOTEL</option>
+										</select>
+										<div
+										*ngIf="genericForm.controls['product_id'].invalid && (genericForm.controls['product_id'].dirty ||  genericForm.controls['product_id'].touched)"
+										class="text-danger">
+										<div *ngIf="genericForm.controls['product_id'].errors.required">
+											product id is required.
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Markup </label>
+									<input type="number" min="0" max="100"  name="Markup" class="form-control typecodeans notypmar valid" formControlName="Markup" #Markup>
+									<input value="GENERIC" name="type" class="typecodeans notypmar" type="hidden">
+									<div
+									*ngIf="genericForm.controls['Markup'].invalid && (genericForm.controls['Markup'].dirty ||  genericForm.controls['Markup'].touched)"
+									class="text-danger">
+									<div *ngIf="genericForm.controls['Markup'].errors.required">
+										Markup is required.
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Markup Type *</label>
+								<select id="markup_type" name="markup_type" class="form-control typecodeans notypmar valid" formControlName="markup_type" #markup_type>
+									<option value="">Choose Markup Type</option>
+									<option value="percentage">Percentage</option>
+									<option value="amount" selected="">Amount</option>
+								</select>
+								<div
+								*ngIf="genericForm.controls['markup_type'].invalid && (genericForm.controls['markup_type'].dirty ||  genericForm.controls['markup_type'].touched)"
+								class="text-danger">
+								<div *ngIf="genericForm.controls['markup_type'].errors.required">
+									markup type is required.
+								</div>
+							</div>
+						</div>
+						<input type="submit" value="Add Markup" [disabled]="genericForm.pristine || genericForm.invalid"  class="bt_n" (click)="genericFormClick(product_id.value, Markup.value, markup_type.value)">
+						
+					</form>
+				</div>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</div>	
+</div>
+</div>
+
+</div>
+</div>
+
+<app-footer></app-footer>

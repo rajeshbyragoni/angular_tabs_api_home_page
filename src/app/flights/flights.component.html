@@ -1,0 +1,214 @@
+<app-header></app-header>
+<div class="container">
+    <div class="mn_all">
+    <div class="row">
+        <div *ngIf="loading == true">
+            <div class="pdlod">
+            <div class="col-md-2 col-md-offset-5">
+                <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+            </div>
+            </div>
+        </div>
+        <div class="mn" *ngIf="loading == false">
+            <!-- filter start -->
+            <div class="col-md-3">
+                <div class="flter_mn">
+                    <h3 class="fltr_til">Filter By: <span class="rst" (click)="resetFilter()">
+                        <!-- <i class="fa fa-repeat pull-right"></i> -->
+                         Reset</span>
+                    </h3>
+                    <div class="flter_in">
+                        <!-- Price flight start here -->
+                        <div class="facilty">
+                            <form [formGroup]="sliderForm">
+                                <div class="col-md-12">
+                                    <h4>Price </h4>
+                                    <div class="pricerange">
+                                        <ng5-slider [(value)]="minValue" [(highValue)]="maxValue"
+                                                    [options]="options"
+                                                    (userChangeEnd)="filter(minValue, maxValue)"></ng5-slider>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Price flight end here -->
+                        <div class="facilty">
+                            <div class="col-md-12">
+                                <h4>Star Rating</h4>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="chk">
+                                    <input type="checkbox" (change)="toggleVisibility($event, 5)"/>5 star <span
+                                        class="pull-right tag">(220)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" (change)="toggleVisibility($event, 4)"/>4 star <span
+                                        class="pull-right">(220)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" (change)="toggleVisibility($event, 3)"/>3 star <span
+                                        class="pull-right">(220)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" (change)="toggleVisibility($event, 2)"/>2 star <span
+                                        class="pull-right">(220)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" (change)="toggleVisibility($event, 1)"/>1 star <span
+                                        class="pull-right">(220)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Stops start -->
+
+                        <!-- <div class="facilty">
+                            <div class="col-md-12">
+                                <h4 class="booking-filters-title">Facility</h4>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="chk">
+                                    <input type="checkbox" (change)="facilityToggle($event, 'Wi-Fi')"/>Wi-Fi <span
+                                        class="pull-right">(252)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" (change)="facilityToggle($event, 'Parking')"/>Parking <span
+                                        class="pull-right">(264)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" (change)="facilityToggle($event, 'Shuttle')"/>Shuttle <span
+                                        class="pull-right">(137)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div> -->
+
+                        <!-- Stops end -->
+                        <!-- Flight Class start -->
+
+                        <!--                        <div class="facilty">-->
+                        <!--                            <div class="col-md-12">-->
+                        <!--                                <h4 class="booking-filters-title">Room Facility-->
+
+                        <!--                                </h4>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-md-12">-->
+                        <!--                                <label class="chk">Air conditioning <span class="pull-right">(55)</span>-->
+                        <!--                                    <input type="checkbox">-->
+                        <!--                                    <span class="checkmark"></span>-->
+                        <!--                                </label>-->
+                        <!--                                <label class="chk">Bathtub <span class="pull-right">(264)</span>-->
+                        <!--                                    <input type="checkbox">-->
+                        <!--                                    <span class="checkmark"></span>-->
+                        <!--                                </label>-->
+                        <!--                                <label class="chk">Flat-screen TV <span class="pull-right"> (137)</span>-->
+                        <!--                                    <input type="checkbox">-->
+                        <!--                                    <span class="checkmark"></span>-->
+                        <!--                                </label>-->
+
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!-- Flight Class end -->
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- filter end -->
+
+            <div class="col-md-9">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="sort dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Sort:
+                                Aviability</a>
+
+                            <ul class="dropdown-menu srt_n">
+                                <!--(click)="sortData('name')"-->
+                                <li><a href="javascript:void(0);">Hotel Name</a>
+                                </li>
+                                <!--(click)="sortData('price')"-->
+                                <li><a href="javascript:void(0);">Price (hight to
+                                    low)</a>
+                                </li>
+                                <!--(click)="sortData('starname')"-->
+                                <li><a href="javascript:void(0);">Ranking</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <ul class="booking-list" *ngIf="arryCheck">
+                    <li *ngFor="let result of results.hotel_search_result.result | grdFilter: {min: searchMinAmount, max: searchMaxAmount, star_rating:searchStar}; let i=index;">
+                        <a class="booking-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="booking-item-img-wrap">
+                                        <!-- <img src="{{result.hotel_api_images}}"> -->
+                                        <img style="height: 130px" src="{{result.hotel_api_images}}" alt="hotel_code"
+                                             onError="this.src='http://media.expedia.com/hotels/2000000/1390000/1383000/1382906/1382906_3_b.jpg' ">
+                                        <!--<img src="http://media.expedia.com/hotels/2000000/1390000/1383000/1382906/1382906_3_b.jpg">-->
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="booking-item-rating">
+                                        <ul class="icon-group booking-item-rating-stars">
+                                            <li>
+                                                <i *ngFor="let n of [] | range:result.star_rating.replace('\*', '')"
+                                                   class="fa fa-star"></i>
+                                                <i *ngFor="let n of [] | rangeOne:result.star_rating.replace('\*', '')"
+                                                   class="fa fa-star-o"></i>
+                                            </li>
+                                        </ul>
+                                        <span class="booking-item-rating-number"><b>{{result.star_rating.replace('\*', '')}}
+                                            of 5</b></span>
+                                    </div>
+                                    <h5 class="booking-item-title">{{result.hotel_name | uppercase}}</h5>
+                                    <p class="booking-item-address"><i
+                                            class="fa fa-map-marker"></i> {{result.address | titleCaseWord}}
+                                    </p>
+                                    <small class="booking-item-last-booked">
+                                        {{result.time}}
+                                    </small>
+                                </div>
+                                <div class="col-md-3 text-center"><span class="booking-item-price-from"></span><span
+                                        class="booking-item-price"> {{ result.amount | currency:'USD':'symbol':'2.3-3' }}</span>
+                                    <span></span>
+                                    <a class="btn btn-primary" [routerLink]="['/hoteldetails']"
+                                       [queryParams]="{ id: result.id, hotel_code: result.hotel_code , request_data: results.requeststring, api_id: result.api_id }">Book
+                                        Now</a>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="booking-list" *ngIf="!arryCheck">
+                    <li>
+                        <a class="booking-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="booking-item-img-wrap">
+                                        <img style="height: 130px" src="assets/img/not-found.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="text-center"> Data Not Found</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,231 @@
+/*YOUR CUSTOM STYLES*/
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary
+{
+	background:#DC2D2D;
+	border-color:#DC2D2D;
+}
+.nopad{
+	padding:0px; 
+}
+.iconPrt img{width:50%;margin:40px 0px;}
+.iconPrt{width:100%;height:150px;font-size:50px;text-align:center;border:1px solid #fff;border-radius:100px;color:#fff;display:block;}
+.iconPrt .fa{padding:50px 0px;}
+.slid{
+color:#000 !important; 	
+}
+.exp_our{
+
+	width:100%;
+	float:left;
+	padding:30px 0px;    
+}
+.lt_bg{
+		background:#f2f2f2;
+}
+.mdimg{
+	width:26%;
+	float:right;  
+}
+.mdimg img {
+	width:100%;
+	height:353px; 
+}
+.login_f{
+	width:100%;
+	float:left;
+	background:rgba(50,50,50, 0.5);
+	padding:25px;
+	border-radius:6px;
+	z-index:99;       
+}
+.hgtat{
+	height:691px !important; 
+}
+.full-ctr {
+   width:100%;
+   float:left;  
+}
+.full-cntr-pd{
+	width:100%;
+	float:left;  
+	padding:180px 0px; 
+}
+.txt-cntr-pd {
+	width:100%;
+	float:left;  
+	padding:20px 0px 30px 0px; 
+	
+	}
+.txt-cntr-pd h3{
+	text-align: center;
+	padding:10px 0px; 
+	font-size:50px; 
+	color:#fff; 
+	text-shadow:0 0 5px #0e0e0e; 
+}
+.txt-cntr-pd h5{
+	text-align: center;
+	padding:10px 0px; 
+	font-size:20px; 
+	color:#fff; 
+	line-height:30px; 
+	text-shadow:0 0 5px #0e0e0e;
+}
+.hvg{
+	width:100%;
+	float:left;  
+}
+/*.hvg h4, .hvg h4 a{
+color:#fff !important; 	
+}*/
+.lg_ftr{
+	width:100%;
+	float:left;
+	/*background:#fff;*/
+	padding:0px;
+	border-radius:6px;
+	margin-bottom:0px;        
+}
+.lg_ftr img{
+background:#fff;
+border-radius:6px;  
+}
+.success_m {
+    width: 100%;
+    float: left;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+    margin: 50px 0px 50px 0px;
+    background: #fff;
+}
+.bg4 {
+    background: #f7f7f7;
+}
+.mn {
+    width: 100%;
+    float: left;
+}
+/*****booking traveller start here ***/
+.clm100 {
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+}
+.clm100_mn {
+    width: 100%;
+    float: left;
+    box-shadow: 0 0 5px #ccc;
+    margin: 15px 0;
+    background: #fff;
+    padding-bottom:15px;  
+}
+.clm100_mn h3 {
+    color: #fff;
+    background: #231f20;
+    margin: 0px;
+    padding: 5px 13px;
+    font-size: 23px;
+    letter-spacing: 1px;
+}
+.mtp10 {
+    margin-top: 15px;
+}
+img.crd {
+    width: 95px;
+    height: 37px;
+}
+.clm100_sd {
+    width: 100%;
+    float: left;
+    box-shadow: 0 0 5px #ccc;
+    margin: 15px 0;
+    background: #fff;
+}
+.clm100_sd h4 {
+    background: #231f20 none repeat scroll 0 0;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #fff;
+    padding: 5px 13px;
+}
+.frer_mn {
+    width: 100%;
+    float: left;
+    border-bottom: solid 1px #ccc;
+    font-size: 16px;
+    padding: 7px 0px;
+    font-weight: 600;
+    color: #184180;
+}
+.tol{
+    color: #0e3775;
+}
+.bt_n {
+    padding: 9px 19px;
+    color: #fff !important;
+    border-radius: 6px;
+    float: left;
+    margin-bottom: 25px;
+    background:#DC2D2D; 
+}
+
+/*****booking traveller end here ***/
+
+
+
+/******* package details start here ****/
+
+.avl_n {
+    width: 100%;
+    float: left;
+}
+.navTabLst {
+    padding: 0px;
+    width: 100%;
+    background:#231f20 !important;
+
+ }
+ .navTabLst li {
+    margin: 0px;
+}
+.navTabLst li a {
+    font-size: 14px;
+    color: #fff;
+    border: 0px;
+    padding: 0 25px;
+    line-height: 40px;
+}
+.tabContnt {
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 0 5px #ccc;
+}   
+.htdes, .box_o{
+	width:100%;
+	float:left;
+	padding:10px 15px;   
+}
+.navTabLst > li > a:hover, .navTabLst > li > a:focus {
+    background: #ffff !important;
+    color: #000;
+}
+.rv_pg{
+	width:100%;
+	float:left;  
+}
+.rv_pg img{
+	width:100%;
+ 
+}
+.rv_pg_rt{
+	width:100%;
+	float:left;  
+}
+.mbm10 {
+    margin-bottom:15px;
+}
+/*#pswdent{
+	display:none; 
+}*/
+
+/**** package details end her *****/

@@ -1,0 +1,322 @@
+<header id="main-header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="logo" routerLink="/home" href="javascript:void(0)">
+                        <img src="assets/img/logo.png" alt="Image Alternative text" title="Image Title"/>
+                    </a>
+                    <a *ngIf="!isLogin" routerLink="/" class="logo" href="javascript:void(0)">
+                        <img src="assets/img/logo.png" alt="Image Alternative text" title="Image Title"/>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                   </div>
+                <div class="col-md-5">
+                    <div class="top-user-area clearfix">
+                        <ul class="top-user-area-list list list-horizontal list-border">
+                            <li class="top-user-area-avatar nav-drop" ngbDropdown>
+                                <a *ngIf="firstName" href="javascript:void(0);" routerLink="/b2bdashboard">
+                                    <img class="origin round" src="{{profilePic}}"
+                                         alt="Image Alternative text"
+                                         title="AMaze"/>{{firstName}}</a>
+                                <ul class="list nav-drop-menu login_slide" aria-labelledby="dropdownBasic1">
+                                    <!-- signin start -->
+                                    <div class="login" *ngIf="login" id="collapseExample" [ngbCollapse]="isCollapsed">
+
+                                        <h4>Please login to your account details</h4>
+
+                                        <!--<form  [formGroup]="LoginForm">-->
+                                            <!--<div class="col-md-12 mbipt">-->
+                                                <!--<input class="form-control" formControlName="username" type="text"-->
+                                                       <!--placeholder="Enter your email or username" #username>-->
+                                                <!--<div *ngIf="LoginForm.controls['username'].invalid && (LoginForm.controls['username'].dirty ||  LoginForm.controls['username'].touched)" class="text-danger">-->
+                                                    <!--<div *ngIf="LoginForm.controls['username'].errors.required">-->
+                                                        <!--Username is required.-->
+                                                    <!--</div>-->
+                                                    <!--<div *ngIf="LoginForm.controls['username'].errors?.pattern">-->
+                                                        <!--Please enter the valid email.-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-12 mbipt">-->
+                                                <!--<input class="form-control " formControlName="password" type="text" placeholder="Enter your password"  #password>-->
+                                                    <!--<div *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty ||  LoginForm.controls['password'].touched)" class="text-danger">-->
+                                                        <!--<div *ngIf="LoginForm.controls['password'].errors.required">-->
+                                                            <!--password is required.-->
+                                                        <!--</div>-->
+                                                        <!--<div *ngIf="LoginForm.controls['password'].errors?.minlength">-->
+                                                            <!--password should be minimum 6 letter required.-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-12 mbipt">-->
+
+                                                <!--<p><span class="forgotbtn"-->
+                                                         <!--(click)="toggleForgot()">Forgot Password ?</span> <span-->
+                                                        <!--class="pull-right signup"-->
+                                                        <!--(click)="toggleRegister()">Sign Up</span></p>-->
+
+                                            <!--</div>-->
+                                            <!--<div class="col-md-12 mbipt">-->
+                                                <!--<input type="submit" class="btn btn-primary btn100"-->
+                                                       <!--value="LOGIN TO YOUR ACCOUNT" (click)="doLogin(username.value, password.value)" [disabled]="LoginForm.pristine || LoginForm.invalid">-->
+                                            <!--</div>-->
+                                        <!--</form>-->
+                                    </div>
+                                    <!-- signin end -->
+                                    <!-- forgot start -->
+                                    <div class="forgot" *ngIf="forgot">
+                                        <form>
+                                            <div class="col-md-12 mbipt">
+                                                <span class="blk_clr">Enter the email address associated with your account, and we wll email you a link to reset your password.</span>
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input class="form-control" type="text" placeholder="Enter your email "
+                                                       required="">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input type="submit" class="btn btn-primary btn100"
+                                                       value="SSEND RESET LINK">
+                                            </div>
+
+                                            <div class="col-md-12 mbipt">
+                                                <p class="text-center mt10"><span class="loginbtn" (click)="toggleLogin()">Sign In</span></p>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <!-- forgot end -->
+
+
+                                    <!-- signup start -->
+                                    <div class="registers" *ngIf="registers">
+                                        <form>
+                                            <div class="col-md-12 mbipt">
+                                                <input class="form-control" type="text"
+                                                       placeholder="Enter your email or username" required="">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input class="form-control" type="text" placeholder="Enter First Name"
+                                                       required="">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input class="form-control" type="text" placeholder="Enter Email Id"
+                                                       required="">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input class="form-control" type="text" placeholder="Enter password"
+                                                       required="">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input class="form-control" type="text"
+                                                       placeholder="Enter Confirm password" required="">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+                                                <input type="submit" class="btn btn-primary btn100"
+                                                       value="SIGN UP TO YOUR ACCOUNT">
+                                            </div>
+                                            <div class="col-md-12 mbipt">
+
+
+                                                <p class="text-center mt10"><span class="loginbtn"
+                                                                                  (click)="toggleLogin()">Sign In</span>
+                                                </p>
+
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <!-- signup end -->
+
+                                </ul>
+                            </li>
+
+                            <!--  <li class="nav-drop" ngbDropdown>
+                               <span *ngIf="selectedHeroes"><a href="javascript:void(0);" id="dropdownBasic1" ngbDropdownToggle>{{selectedHeroes.person}} </a></span>
+                                 <ul class="list nav-drop-menu"  aria-labelledby="dropdownBasic1">
+                                   <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+                                     <a href="javascript:void(0);">  {{hero.person}}</a>
+                                   </li>
+                                 </ul>
+                             </li>  -->
+
+                            <!--   <li class="nav-drop" ngbDropdown>
+                                  <a href="javascript:void(0);" id="dropdownBasic1" ngbDropdownToggle> EUR € </a>
+                                    <ul class="list nav-drop-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                      <li *ngFor="let currency of currencys">
+                                        <a href="javascript:void(0);">{{currency.currencyname}} <span class="right">{{currency.cdcode}}</span></a>
+                                      </li>
+                                    </ul>
+                                </li>  -->
+                            <li>
+                                <a *ngIf="isLogin === 'true' " routerLink="/logout">Sign Out</a>
+                            </li>
+
+                            <li class="nav-drop" ngbDropdown>
+                                <span *ngIf="selectedCurrencys">
+                                    <a href="javascript:void(0);" id="dropdownBasic1" ngbDropdownToggle>
+                                        {{selectedCurrencys.currencyname}} <span class="right">{{selectedCurrencys.cdcode}}</span></a></span>
+                                <ul class="list nav-drop-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <li *ngFor="let currency of currencydata" [class.selected]="currency === selectedCurrency" (click)="onSelectCurrency(currency)">
+                                        <a href="javascript:void(0);">{{currency.currencyname}} <span class="right">{{currency.cdcode}}</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="top-user-area-lang nav-drop" ngbDropdown>
+                               <span *ngIf="selectedCountrys"><a href="javascript:void(0);" id="dropdownBasic2"
+                                                                 ngbDropdownToggle>
+                                 <img src="{{selectedCountrys.src}}"> <span
+                                       class="right"> {{selectedCountrys.countryname}}</span>
+                              </a></span>
+                                <ul class="list nav-drop-menu" ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                                    <li *ngFor="let country of countrydata"
+                                        [class.selected]="country === selectedCountry"
+                                        (click)="onSelectCountry(country)">
+                                        <a href="javascript:void(0);"><img src="{{country.src}}"> <span
+                                                class="right"> {{country.countryname}}</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="container">
+              <!--   <div class="nav">
+                    <ul class="slimmenu" id="slimmenu">
+                        <li class="active"><a href="#" routerLink="/" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+                        <li  class="dropdown">  <div>
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Hotels</a>
+
+                                    <ul class="dropdown-menu">
+
+                                        <li><a href="#" routerLink="/hotels" routerLinkActive="active">Results</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);">Details
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                        </li>
+                        <li><a href="#">Flights</a></li>
+                        <li><a href="#">Flight + Hotel (dynamic)</a> </li>
+                        <li><a href="#">Holiday</a></li>
+                        <li><a href="#">Pre-Packages</a></li>
+                        <li><a href="#">YACHT</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div> -->
+                <nav class="navbar navbar-inverse">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav slimmenu" id="slimmenu">
+         <li class="active"><a href="#" routerLink="/" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+                        <li><a href="#">Flights</a></li>
+                        <li  class="dropdown">  <div>
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Hotels</a>
+
+                                    <ul class="dropdown-menu">
+
+                                        <li><a href="#" routerLink="/hotels" routerLinkActive="active">Results</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);">Details
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                        </li>
+                        <li><a href="#">Excursions</a> </li>
+                        <li><a href="#">Packages</a></li>
+                        <li><a href="#">Car Rental</a></li>
+                        <li><a href="#">Discover Antalya </a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+      </ul>
+
+    </div>
+
+</nav>
+            </div>
+
+<!--  <div class="container">
+        <nav class="navbar menu">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto pull-right nav-lst slimmenu" id="slimmenu">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{exact:true}">Home </a>
+                    </li>
+                    <li class="nav-item" ngbDropdown class="d-inline-block">
+                        <a class="nav-link" ngbDropdownToggle>Hotels</a>
+                        <ul ngbDropdownMenu class="drpmu">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/result" routerLinkActive="active">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/hoteldetails" routerLinkActive="active">Details</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" routerLink="/bookingreview"
+                                                    routerLinkActive="active">review</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" routerLink="/bookingtraveller"
+                                                    routerLinkActive="active">Traveller</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" routerLink="/successpayment"
+                                                    routerLinkActive="active">success</a></li>
+
+                        </ul>
+
+                    </li>
+                    <li class="nav-item" ngbDropdown class="d-inline-block">
+                        <a class="nav-link" ngbDropdownToggle>Flights</a>
+                        <ul ngbDropdownMenu class="drpmu">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/flight" routerLinkActive="active">Results</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Flight + Hotel (dynamic) </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Holiday </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Pre-Packages </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">YACHT </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Contact Us </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>   -->
+</header>

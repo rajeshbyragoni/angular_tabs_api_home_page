@@ -1,0 +1,464 @@
+<app-header></app-header>
+<div class="mn_all">
+    <div class="mn bg4">
+        <div class="container" *ngIf="loading == true">
+            <div class="col-md-2 col-md-offset-5">
+                <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+            </div>
+        </div>
+        <div class="container" *ngIf="loading == false">
+            <header class="booking-item-header">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2 class="lh1em">{{ hotelDetail.hotel_name}}</h2>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="tabbable booking-details-tabbable">
+                        <ul class="nav nav-tabs myTabd" id="myTab">
+                            <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Photos</a>
+                            </li>
+                            <li><a href="#google-map-tab" data-toggle="tab"><i class="fa fa-map-marker"></i>On the
+                                Map</a>
+                            </li>
+                             <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-signal"></i>Rating</a>
+                             </li>
+                             <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-asterisk"></i>Facilities</a>
+                             </li>
+                        </ul>
+                        <!--<p > {{ parsingJson(hotelDetail.images) }}</p>-->
+                        <!--{{ images | json}}-->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab-1">
+                                <div class="tb_cnt">
+                                    <!-- START LIGHTBOX GALLERY -->
+                                    <div class="dts_img">
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                                <div *ngFor="let img of parsingJson(hotelDetail.images); index as i" class="item {{ i === 0 ? 'active' : '' }}" >
+                                                    <div class="bg-holder full">
+                                                        <div class="bg-blur"><img src="{{img}}" alt="{{i}}" style="height: 350px"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <!--  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                               <span class="glyphicon glyphicon-chevron-left"></span>
+                                               <span class="sr-only">Previous</span>
+                                             </a>
+                                             <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                               <span class="glyphicon glyphicon-chevron-right"></span>
+                                               <span class="sr-only">Next</span>
+                                           </a> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- END LIGHTBOX GALLERY -->
+                            </div>
+                            <div class="tab-pane" id="google-map-tab">
+                                <div class="tb_cnt">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12744006.140328264!2d26.154410807001664!3d38.75614310794431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b0155c964f2671%3A0x40d9dbd42a625f2a!2sTurkey!5e0!3m2!1sen!2sin!4v1552912288609"
+                                            width="550" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                              <div class="tab-pane" id="tab-3">
+                                 <div class="mt201">
+                                      <div class="col-md-8 nopad">
+                                              <h4 class="lhem">Traveler rating</h4>
+                                              <ul class="list booking-item-raiting-list">
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Exellent</div>
+                                                      <div class="booking-item-raiting-list-bar">
+                                                          <div style="width:86%;"></div>
+                                                      </div>
+                                                      <div class="booking-item-raiting-list-number">1372</div>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Very Good</div>
+                                                      <div class="booking-item-raiting-list-bar">
+                                                          <div style="width:7%;"></div>
+                                                      </div>
+                                                      <div class="booking-item-raiting-list-number">62</div>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Average</div>
+                                                      <div class="booking-item-raiting-list-bar">
+                                                          <div style="width:3%;"></div>
+                                                      </div>
+                                                      <div class="booking-item-raiting-list-number">28</div>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Poor</div>
+                                                      <div class="booking-item-raiting-list-bar">
+                                                          <div style="width:2%;"></div>
+                                                      </div>
+                                                      <div class="booking-item-raiting-list-number">9</div>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Terrible</div>
+                                                      <div class="booking-item-raiting-list-bar">
+                                                          <div style="width:1%;"></div>
+                                                      </div>
+                                                      <div class="booking-item-raiting-list-number">9</div>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                          <div class="col-md-4 nopad">
+                                              <h4 class="lhem">Summary</h4>
+                                              <ul class="list booking-item-raiting-summary-list">
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Sleep</div>
+                                                      <ul class="icon-group booking-item-rating-stars">
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Location</div>
+                                                      <ul class="icon-group booking-item-rating-stars">
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o text-gray"></i>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Service</div>
+                                                      <ul class="icon-group booking-item-rating-stars">
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Clearness</div>
+                                                      <ul class="icon-group booking-item-rating-stars">
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                                  <li>
+                                                      <div class="booking-item-raiting-list-title">Rooms</div>
+                                                      <ul class="icon-group booking-item-rating-stars">
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                          <li><i class="fa fa-smile-o"></i>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                 </div>
+                              </div>
+                             <div class="tab-pane" id="tab-4">
+                                 <div class="row mt201">
+                                     <div class="col-md-4">
+                                         <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                             <li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span>
+                                             </li>
+                                             <li><i class="im im-parking"></i><span class="booking-item-feature-title">Parking</span>
+                                             </li>
+                                             <li><i class="im im-plane"></i><span class="booking-item-feature-title">Airport Transport</span>
+                                             </li>
+                                             <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span>
+                                             </li>
+                                             <li><i class="im im-fitness"></i><span class="booking-item-feature-title">Fitness Center</span>
+                                             </li>
+                                         </ul>
+                                     </div>
+                                     <div class="col-md-4">
+                                         <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                             <li><i class="im im-pool"></i><span class="booking-item-feature-title">Pool</span>
+                                             </li>
+                                             <li><i class="im im-spa"></i><span class="booking-item-feature-title">SPA</span>
+                                             </li>
+                                             <li><i class="im im-restaurant"></i><span class="booking-item-feature-title">Restaurant</span>
+                                             </li>
+                                             <li><i class="im im-wheel-chair"></i><span class="booking-item-feature-title">Wheelchair Access</span>
+                                             </li>
+                                             <li><i class="im im-business-person"></i><span class="booking-item-feature-title">Business Center</span>
+                                             </li>
+                                         </ul>
+                                     </div>
+                                     <div class="col-md-4">
+                                         <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                             <li><i class="im im-children"></i><span class="booking-item-feature-title">Children Activites</span>
+                                             </li>
+                                             <li><i class="im im-casino"></i><span class="booking-item-feature-title">Casino &amp; Gambling</span>
+                                             </li>
+                                             <li><i class="im im-bar"></i><span class="booking-item-feature-title">Bar/Lounge</span>
+                                             </li>
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="ml20">
+                            <div class="booking-item-meta">
+                                <h2 class="lh1em mt40">Exeptional!</h2>
+                                <h3>${{ hotelDetail['amount'] }}
+                                    <small></small>
+                                </h3>
+                                <div class="booking-item-rating">
+                                    <ul class="icon-list icon-group booking-item-rating-stars">
+                                        <i *ngFor="let n of [] | range:hotelDetail.star_rating " class="fa fa-star"></i>
+                                        <i *ngFor="let n of [] | rangeOne:hotelDetail.star_rating " class="fa fa-star-o"></i>
+                                    </ul>
+                                    <span class="booking-item-rating-number"><b> {{ hotelDetail.star_rating }}</b> of 5 <small
+                                            class="text-smaller">guest rating</small></span>
+                                    <p><a class="text-default" >based on 1535 reviews</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-7">
+                            <h4 class="lh1em">Traveler raiting</h4>
+                            <ul class="list booking-item-raiting-list">
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Exellent</div>
+                                    <div class="booking-item-raiting-list-bar">
+                                        <div style="width:89%;"></div>
+                                    </div>
+                                    <div class="booking-item-raiting-list-number">1231</div>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Very Good</div>
+                                    <div class="booking-item-raiting-list-bar">
+                                        <div style="width:5%;"></div>
+                                    </div>
+                                    <div class="booking-item-raiting-list-number">76</div>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Average</div>
+                                    <div class="booking-item-raiting-list-bar">
+                                        <div style="width:4%;"></div>
+                                    </div>
+                                    <div class="booking-item-raiting-list-number">40</div>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Poor</div>
+                                    <div class="booking-item-raiting-list-bar">
+                                        <div style="width:2%;"></div>
+                                    </div>
+                                    <div class="booking-item-raiting-list-number">13</div>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Terrible</div>
+                                    <div class="booking-item-raiting-list-bar">
+                                        <div style="width:1%;"></div>
+                                    </div>
+                                    <div class="booking-item-raiting-list-number">7</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5">
+                            <h4 class="lh1em">Summary</h4>
+                            <ul class="list booking-item-raiting-summary-list">
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Sleep</div>
+                                    <ul class="icon-group booking-item-rating-stars">
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Location</div>
+                                    <ul class="icon-group booking-item-rating-stars">
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o text-gray"></i>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Service</div>
+                                    <ul class="icon-group booking-item-rating-stars">
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Clearness</div>
+                                    <ul class="icon-group booking-item-rating-stars">
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="booking-item-raiting-list-title">Rooms</div>
+                                    <ul class="icon-group booking-item-rating-stars">
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                        <li><i class="fa fa-smile-o"></i>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div> -->
+                </div>
+            </div>
+            <div class="roomlist">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="avl_n">
+                            <h4>Available Rooms</h4>
+                            <div class="booking-list" *ngIf="roomLoading == true">
+                                <div class="col-md-2 col-md-offset-5">
+                                    <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+                                </div>
+                            </div>
+                            <ul class="booking-list" *ngIf="roomLoading == false">
+                                <li *ngFor="let bookRoom of roomAPIData; index as i ">
+                                    <a class="booking-item">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src="{{bookRoom.hotel_api_images}}"
+                                                     alt="{{bookRoom.Description}}"
+                                                     title="{{bookRoom.Description}}"
+                                                     onError="this.src='http://media.expedia.com/hotels/2000000/1390000/1383000/1382906/1382906_3_b.jpg' "
+                                                     style="height: 100px;">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5 class="booking-item-title">{{bookRoom.Description}}</h5>
+                                                <p class="text-small">Semper a dui sapien proin dis tellus eu praesent
+                                                    sodales posuere cum hendrerit</p>
+
+                                            </div>
+                                            <div class="col-md-3 text-center">
+                                                <span class="booking-item-price"> $ {{bookRoom.amount}}</span><br>
+                                                <button class="btn btn-primary" [disabled]="disabledBtn" (click)="bookRomm(roomIndex[i])">Book</button>
+                                                <span class="hided" id="sucsID-{{roomIndex[i]}}" style="display: block; color: #0e8534;">Success</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="avl_n">
+                            <h4>Hotels Near </h4>
+                            <ul class="booking-list">
+                                <li *ngFor="let data of relatedHotels; index as i">
+                                    <div class="booking-item booking-item-small">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img src="{{data.hotel_api_images}}" height="70px"
+                                                     alt="{{data.hotel_name}}"
+                                                     title="{{data.hotel_name}}">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h5 class="booking-item-title">{{data.hotel_name}}</h5>
+                                                <ul class="icon-group booking-item-rating-stars">
+                                                    <i *ngFor="let n of [] | range:data.star_rating" class="fa fa-star"></i>
+                                                    <i *ngFor="let n of [] | rangeOne:data.star_rating " class="fa fa-star-o"></i>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3"><span class="booking-item-price-from">from</span><span
+                                                    class="booking-item-price">$ {{data.amount}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

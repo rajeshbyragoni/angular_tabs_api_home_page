@@ -1,0 +1,213 @@
+<app-header></app-header>
+<div class="mn_all">
+    <div class="mn bg4">
+        <div class="container">
+            <div class="row">
+                <!-- clm8 start here -->
+                <div class="col-md-9">
+                    <div class="clm100_mn">
+                        <h3>Booking Review</h3>
+                        <div class="col-md-12 mtp10 mbm10" *ngIf="product_name === 'HOTEL' ">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="rv_pg">
+                                        <img class="img-responsive" src="{{ cart.images }}" alt="{{ cart.images }}" style="height: 150px;"
+                                             onError="this.src='http://media.expedia.com/hotels/2000000/1390000/1383000/1382906/1382906_3_b.jpg' ">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="rv_pg_rt">
+                                            <h4>{{ cart.hotel_name }}</h4>
+                                            <div class="rate">
+                                                <span *ngFor="let n of [] | range:cart.star_rating " class="fa fa-star str"></span>
+                                                <span *ngFor="let n of [] | rangeOne:cart.star_rating " class="fa fa-star-o str"></span>
+                                            </div>
+                                            <p> {{ cart.description | slice: 0: 150}} </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 nopad"><b>Check-In</b><br> {{ cart.checkin | date: 'MMMM' }}
+                                            <strong> {{ cart.checkin | date: 'd' }}
+                                                <sup>
+                                                    {{(cart.checkin | date: "d") | dateSuffix}}
+                                                </sup>
+                                                {{ cart.checkin | date: 'yyyy' }}</strong>
+                                        </div>
+
+                                        <div class="col-md-6 nopad"><b>Check-In</b><br> {{ cart.checkout | date: 'MMMM' }}
+                                            <strong> {{ cart.checkout | date: 'd' }}
+                                                <sup>
+                                                    {{(cart.checkout | date: "d") | dateSuffix}}
+                                                </sup>
+                                                {{ cart.checkout | date: 'yyyy' }}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-6 nopad">
+                                            <b>Adult : </b> <span>{{cart.adult}}</span>
+                                        </div>
+                                        <div class="col-md-6 nopad">
+                                            <b>Child : </b> <span>{{cart.child}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 mtp10 mbm10" *ngIf="product_name === 'TOUR' ">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="rv_pg">
+                                        <img class="img-responsive" src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/tours/{{ resData.tour_images[0] }}" alt="{{ resData.tour_images[0] }}"
+                                             onError="this.src='http://media.expedia.com/hotels/2000000/1390000/1383000/1382906/1382906_3_b.jpg' ">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="rv_pg_rt">
+                                            <h4>{{ cart.tour_name }}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 nopad"><b>From Date</b><br>
+                                            <strong>  {{cart.form_date}} </strong>
+                                        </div>
+
+                                        <div class="col-md-6 nopad"><b>To Date</b><br>
+                                            <strong>  {{cart.to_date}} </strong>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-6 nopad"><strong>Tour Type:</strong></div>
+                                        <div class="col-md-6"><strong>{{ cart.excursion_type }}</strong></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-6 nopad">
+                                            <b>Adult : </b> <span>{{ cart.adult }}</span>
+                                        </div>
+                                        <div class="col-md-6 nopad">
+                                            <b>Child : </b> <span>{{ cart.child > 0 ? cart.child : '0'}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clm100_mn">
+                        <h3>Login Details</h3>
+                        <div class="col-md-12 nopad mtp10 mbm10">
+                            <div class="col-md-6 nopad todal">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Enter Email ID</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span id="error" class="text-danger"><b>Please Complete All the fields</b></span>
+                                        <input class="form-control" id="emailID" type="text" value="{{ emailID }}" placeholder="Enter Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="chk"> I have an Account
+                                        <input type="checkbox"  name="confirm" id="ihave">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                </div>
+                                <div class="col-md-12" id="pswdent" style="display:none;">
+                                    <div class="form-group">
+                                        <label>Enter Your Password</label>
+                                        <input class="form-control" id="pswd"  type="password" placeholder="Enter Password" />
+                                    </div>
+                                </div>
+                                <div id="cdm">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Code</label>
+                                                    <select class="form-control" name="phoneCode" id="phoneCode">
+                                                    <option>Select Code</option>
+                                                    <option *ngFor="let phone of phoneCode; index as i" value="{{phone.phonecode}}"> {{phone.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label>Enter Mobile Number</label>
+                                                    <input class="form-control" id="mobileNo" type="text" placeholder="Enter Mobile Number">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="bt_n goldbg" id="Continue" (click)="ContinueBTN()"> Continue</button>
+                            </div>
+                            <div class="col-md-12" *ngIf="isHide">
+                                <p class="text-success"><b>Successfully Login</b></p>
+                                <p><b>{{successMessage}}</b></p>
+                                <button (click)="successLogin()" class="bt_n goldbg"> Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- clm8 end here -->
+
+                <!-- clm4 start here -->
+                <div class="col-md-3">
+                    <div class="clm100_sd">
+                        <h4>Fare Details</h4>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12"><span class="h4">Promo Code</span></div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" #promo>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-info" (click)="promoCode(promo.value)">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">Sub Total</div>
+                                    <div class="col-md-6 goldclr">{{ cart.API_CURR }} {{ cart.total_cost | mathRound }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">Discount</div>
+                                    <div class="col-md-6 goldclr">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frer_mn">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6"><span class="tol">Total Price</span></div>
+                                    <div class="col-md-6 goldclr"><span class="tol">{{ cart.API_CURR }} {{ cart.total_cost | mathRound }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- clm4 end here -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

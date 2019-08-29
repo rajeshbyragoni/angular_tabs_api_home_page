@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="mn_all">
+    <div class="bg4">
+        <div class="container">
+            <div class="success_m">
+                <div class="row">
+                   <div class="col-md-2"></div>
+                   <div class="col-md-8" *ngIf="product_name == 'HOTEL'">
+                    <div class="round box-icon-large box-icon-center box-icon-success mb40"><i class="fa fa-check wht"></i></div>	
+                    <h2 class="text-center ble">{{ user_name }}, your payment was successful!</h2>
+                    <h5 class="text-center mb30 ble">Booking details has been send to {{ user_email }}</h5>
+                    <ul class="order-payment-list list mb30">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5 class="ble"><i class="fa fa-building-o"></i> {{ hotel_name }}</h5>
+                                    <p class="ble"><small>From {{ checkin }} <b>To</b> {{ checkout }}</small>
+                                    </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="text-right"><span class="text-lg ylo">${{ amount }} </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--  <h4 class="text-center">You might also need in New York</h4> -->
+                    <ul class="list list-inline list-center">
+                        <li>
+                            <button class="btn btn-primary" [routerLink]="['/voucher']" [queryParams]="{ticket: parent_pnr_no}"><i class="fa fa-building-o"></i> View Voucher</button>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="col-md-8" *ngIf="product_name == 'TOUR'">
+                        <div class="round box-icon-large box-icon-center box-icon-success mb40"><i class="fa fa-check wht"></i></div>
+                        <h2 class="text-center"> <span class="nameClass">{{ resData['billing_name'] }}</span>, your payment was successful!</h2>
+                        <h5 class="text-center mb30">Booking details has been send to <span class="nameClass">{{ resData['billing_email'] }} </span> </h5>
+                        <ul class="order-payment-list list mb30">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <h5 class="ble"><i class="fa fa-building-o"></i> {{ resData['tour_name'] }}</h5>
+                                        <p class="ble"><small>From {{ resData['form_date'] }} <b>To</b> {{ resData['to_date'] }}</small>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-right"><span class="text-lg ylo">$ {{ amount }} </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!--  <h4 class="text-center">You might also need in New York</h4> -->
+                        <ul class="list list-inline list-center">
+                            <li>
+                                <button class="btn btn-primary" [routerLink]="['/voucher']" [queryParams]="{ticket: parent_pnr_no}"><i class="fa fa-building-o"></i> View Voucher</button>
+                            </li>
+                        </ul>
+                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="gap"></div>
+        </div>
+    </div>
+</div>	
+</div>
+<app-footer></app-footer>

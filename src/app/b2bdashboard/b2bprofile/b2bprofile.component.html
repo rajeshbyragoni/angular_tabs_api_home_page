@@ -1,0 +1,332 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+            <div role="tabpanel" class="tab-pane" id="tab2">
+                <div class="tbnew">
+                 
+                   <div *ngIf="showMsg === 'true' " class="alert alert-success" role="alert">
+                    Sucessfully added
+                </div>
+                <div *ngIf="showMsg === 'false' " class="alert alert-danger" role="alert">
+                    Unable to create  
+                </div>
+                <h1>Profile Settings</h1>
+                <form [formGroup]="profileForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-icon-left"><i class="fa fa-envelope input-icon"></i>
+                                <label>Agency Name *</label>
+                                <input value="Adavegas" name="AgencyName" class="form-control" type="text"
+                                formControlName="AgencyName" #AgencyName>
+                                <div
+                                *ngIf="profileForm.controls['AgencyName'].invalid && (profileForm.controls['AgencyName'].dirty ||  profileForm.controls['AgencyName'].touched)"
+                                class="text-danger">
+                                <div *ngIf="profileForm.controls['AgencyName'].errors.required">
+                                    Agency Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                                  <!--<div class="form-group form-group-icon-left"><i class="fa fa-user input-icon"></i>
+                                      <label>Country *</label>
+                                        <select class="form-control" formControlName="country" (change)="countryChange(country.value)" #country>
+                                <option value="" selected="">Select Country</option>
+                                <option *ngFor="let city of countryArray" [value]="city.country_code">{{city.country_name}}</option>
+                            </select>
+
+                                      <div
+                                          *ngIf="profileForm.controls['country'].invalid && (profileForm.controls['country'].dirty ||  profileForm.controls['country'].touched)"
+                                          class="text-danger">
+                                          <div *ngIf="profileForm.controls['country'].errors.required">
+                                              country is required.
+                                          </div>
+                                      </div>
+                                  </div>-->
+
+                                  <div class="form-group">
+                                    <label>City *</label>
+                                    <select class="form-control" formControlName="city" #city>
+                                        <option>ff</option>
+                                        <option value="" selected>Select City</option>
+                                        <option *ngFor="let city of stateArray" [value]="city.city_name">{{city.city_name}}</option>
+                                    </select>
+                                    <div
+                                    *ngIf="profileForm.controls['city'].invalid && (profileForm.controls['city'].dirty ||  profileForm.controls['city'].touched)"
+                                    class="text-danger">
+                                    <div *ngIf="profileForm.controls['city'].errors.required">
+                                        city is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address *</label>
+                                <textarea rows="2" name="address" cols="20" class="form-control"
+                                formControlName="address" #address>No 6 main car street</textarea>
+                                <div
+                                *ngIf="profileForm.controls['address'].invalid && (profileForm.controls['address'].dirty ||  profileForm.controls['address'].touched)"
+                                class="text-danger">
+                                <div *ngIf="profileForm.controls['address'].errors.required">
+                                    Address is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Post Code *</label>
+                            <input type="text" value="525852" name="zip_code" class="form-control"
+                            formControlName="zip_code" #zip_code>
+                            <div
+                            *ngIf="profileForm.controls['zip_code'].invalid && (profileForm.controls['zip_code'].dirty ||  profileForm.controls['zip_code'].touched)"
+                            class="text-danger">
+                            <div *ngIf="profileForm.controls['zip_code'].errors.required">
+                                Post Code is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fax *</label>
+                        <input type="text" value="4334343" name="Fax" class="form-control"
+                        formControlName="Fax" #Fax>
+                        <div
+                        *ngIf="profileForm.controls['Fax'].invalid && (profileForm.controls['Fax'].dirty ||  profileForm.controls['Fax'].touched)"
+                        class="text-danger">
+                        <div *ngIf="profileForm.controls['Fax'].errors.required">
+                            Fax is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon"></i>
+                    <label>Phone *</label>
+                    <input type="text" class="form-control" value="45678952" name="c_phone"
+                    formControlName="c_phone" #c_phone>
+                    <div
+                    *ngIf="profileForm.controls['c_phone'].invalid && (profileForm.controls['c_phone'].dirty ||  profileForm.controls['c_phone'].touched)"
+                    class="text-danger">
+                    <div *ngIf="profileForm.controls['c_phone'].errors.required">
+                        Phone is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-group-icon-left"><i class="fa fa-phone input-icon"></i>
+                <label>Website *</label>
+                <input type="text" value="www.adavegas.com" name="Website"
+                class="form-control" formControlName="Website" #Website>
+                <div
+                *ngIf="profileForm.controls['Website'].invalid && (profileForm.controls['Website'].dirty ||  profileForm.controls['Website'].touched)"
+                class="text-danger">
+                <div *ngIf="profileForm.controls['Website'].errors.required">
+                    Website is required.
+                </div>
+                <div *ngIf="profileForm.controls['Website'].errors.pattern">
+                    Website invalid is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile *</label>
+            <input type="text" value="9789639143" name="contact_no" class="form-control"
+            formControlName="contact_no" #contact_no>
+            <div
+            *ngIf="profileForm.controls['contact_no'].invalid && (profileForm.controls['contact_no'].dirty ||  profileForm.controls['contact_no'].touched)"
+            class="text-danger">
+            <div *ngIf="profileForm.controls['contact_no'].errors.required">
+                Mobile is required.
+            </div>
+        </div>
+    </div>
+
+
+    <div class="gap gap-small"></div>
+
+
+</div>
+<div class="col-md-6">
+
+    <div class="form-group">
+        <label>E-mail *</label>
+        <input type="text" value="admin@adavegas.com" name="Email"
+        class="form-control" formControlName="Email" #Email>
+        <div
+        *ngIf="profileForm.controls['Email'].invalid && (profileForm.controls['Email'].dirty ||  profileForm.controls['Email'].touched)"
+        class="text-danger">
+        <div *ngIf="profileForm.controls['Email'].errors.email">
+            E-mail is required.
+        </div>
+        <div *ngIf="profileForm.controls['Email'].errors.pattern">
+            E-mail invalid is required.
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label>Contact Person Name *</label>
+    <input type="text" value="adavegas" name="c_person" class="form-control"
+    formControlName="c_person" #c_person>
+    <div
+    *ngIf="profileForm.controls['c_person'].invalid && (profileForm.controls['c_person'].dirty ||  profileForm.controls['c_person'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['c_person'].errors.required">
+        Person Name is required.
+    </div>
+</div>
+</div>
+
+<div class="form-group">
+    <label>Contact Person Surname *</label>
+    <input value="admin" name="Surname" class="form-control" formControlName="Surname"
+    #Surname
+    type="text">
+    <div
+    *ngIf="profileForm.controls['Surname'].invalid && (profileForm.controls['Surname'].dirty ||  profileForm.controls['Surname'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['Surname'].errors.required">
+        Person Surname is required.
+    </div>
+</div>
+</div>
+
+<div class="form-group">
+    <label>Type of Company *</label>
+    <select name="company" class="form-control" formControlName="company" #company>
+        <option value="">Choose</option>
+        <option value="Travel Agent" selected="">Travel Agent</option>
+        <option value="Wholesaler">Wholesaler</option>
+        <option value="Travel Switch">Travel Switch</option>
+        <option value="Tour Operator">Tour Operator</option>
+        <option value="Airline">Airline</option>
+    </select>
+    <div
+    *ngIf="profileForm.controls['company'].invalid && (profileForm.controls['company'].dirty ||  profileForm.controls['company'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['company'].errors.required">
+        Company is required.
+    </div>
+</div>
+</div>
+
+
+<div class="form-group">
+    <label>Currency *</label>
+    <select class="form-control valid" formControlName="currency" #currency>
+        <option value="" selected>Select currency</option>
+        <option *ngFor="let currency of currencyArray" [value]="currency.currency_code">
+            {{currency.currency_code}}
+        </option>
+    </select>
+    <div
+    *ngIf="profileForm.controls['currency'].invalid && (profileForm.controls['currency'].dirty ||  profileForm.controls['currency'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['currency'].errors.required">
+        currency is required.
+    </div>
+</div>
+</div>
+
+
+<div class="form-group">
+    <label>Position/Role *</label>
+    <input type="text" value="site owner" name="c_designation" class="form-control"
+    formControlName="c_designation" #c_designation>
+    <div
+    *ngIf="profileForm.controls['c_designation'].invalid && (profileForm.controls['c_designation'].dirty ||  profileForm.controls['c_designation'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['c_designation'].errors.required">
+        Designation is required.
+    </div>
+</div>
+</div>
+
+<div class="form-group">
+    <label>IATA *</label>
+    <input type="text" value="IATA65656" name="Iata" class="form-control"
+    formControlName="Iata" #Iata>
+    <div
+    *ngIf="profileForm.controls['Iata'].invalid && (profileForm.controls['Iata'].dirty ||  profileForm.controls['Iata'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['Iata'].errors.required">
+        Iata is required.
+    </div>
+</div>
+</div>
+
+
+<div class="form-group">
+    <label>Profile Picture * --<b>{{profileName}}</b></label>
+
+    <button class="btn btn-info btn-block" type="button" #upload
+    (click)="fileInput.click()">
+    <i class="fa fa-upload"></i>&nbsp;&nbsp;
+    <span class="bold">Upload Photo</span></button>
+    <input type="file" name="profile_picture" (change)="fileChange($event)" #fileInput
+    formControlName="profile_picture" style="display: none;"/>
+
+    <div
+    *ngIf="profileForm.controls['profile_picture'].invalid && (profileForm.controls['profile_picture'].dirty ||  profileForm.controls['profile_picture'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['profile_picture'].errors.required">
+        profile picture is required.
+    </div>
+</div>
+
+
+</div>
+
+
+<div class="form-group">
+    <label>Trade License Number *</label>
+    <input type="text"  name="licence_number" class="form-control"
+    formControlName="licence_number" #licence_number>
+    <div
+    *ngIf="profileForm.controls['licence_number'].invalid && (profileForm.controls['licence_number'].dirty ||  profileForm.controls['licence_number'].touched)"
+    class="text-danger">
+    <div *ngIf="profileForm.controls['licence_number'].errors.required">
+        licence number is required.
+    </div>
+</div>
+</div>
+
+
+                               <!--  <div class="form-group">
+                                    <p><img src="{{licence_picture}}"></p>
+                                    <label>license picture * <b>{{licenseName}}</b></label>
+                                    <button class="btn btn-info btn-block" type="button"
+                                            (click)="fileInputLiesense.click()">
+                                        <i class="fa fa-upload"></i>&nbsp;&nbsp;
+                                        <span class="bold">Upload Photo</span></button>
+                                    <input type="file" name="license_picture" (change)="fileChangeLiesense($event)"
+                                           #fileInputLiesense formControlName="license_picture" style="display: none;"/>
+                                    <div
+                                        *ngIf="profileForm.controls['license_picture'].invalid && (profileForm.controls['license_picture'].dirty ||  profileForm.controls['license_picture'].touched)"
+                                        class="text-danger">
+                                        <div *ngIf="profileForm.controls['license_picture'].errors.required">
+                                            license picture is required.
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
+                                <input type="submit" value="Update Profile" class="bt_n" [disabled]="profileForm.pristine || profileForm.invalid"  value="Submit"
+                                (click)="profileClick(AgencyName.value, city.value, address.value, zip_code.value, Fax.value, c_phone.value, Website.value, contact_no.value, Email.value, c_person.value, Surname.value, company.value, currency.value, c_designation.value, Iata.value,   licence_number.value)"/>
+                                
+                                
+
+                            </div>
+                        </div>
+                        <!--  {{profileForm.value | json}} -->
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,167 @@
+<app-header></app-header>
+<div class="container">
+    <div class="mn_all">
+    <div class="row">
+        <div *ngIf="loading == true">
+            <div class="pdlod">
+            <div class="col-md-2 col-md-offset-5">
+                <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+            </div>
+            </div>
+        </div>
+        <div class="mn">
+            <!-- filter start -->
+            <div class="col-md-3" *ngIf="loading == false">
+                <form id="searchResponse">
+                    <input type="hidden" name="country" value="{{ reqData.country }}">
+                    <input type="hidden" name="departureCode" value="{{ reqData.departureCode }}">
+                    <input type="hidden" name="departure_date" value="{{ reqData.departure_date }}">
+                    <input type="hidden" name="arrival_date" value="{{ reqData.arrival_date }}">
+                    <input type="hidden" name="adult_count" value="{{ reqData.adult_count }}">
+                    <input type="hidden" name="child_count" value="{{ reqData.child_count }}">
+                    <input type="hidden" name="infant_count" value="{{ reqData.infant_count }}">
+                    <input type="hidden" name="babychair" value="{{ '0' }}">
+                    <div class="flter_mn">
+                    <h3 class="fltr_til"><span>Filter Search</span></h3>
+                    <div class="flter_in">
+                        <div class="facilty">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="tour_city">City</label>
+                                    <select class="form-control" name="city" id="tour_city" (change)="getRegion($event)">
+                                        <option value="">Select City</option>
+                                        <option *ngFor="let city of cityArray; " value="{{ city['id'] }}">{{ city['city_name'] }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="tour_region">Region</label>
+                                    <select class="form-control" name="region" id="tour_region"  (change)="getSubregion($event)">
+                                        <option value="All" selected="selected">All</option>
+                                        <option *ngFor="let region of regionArray; " value="{{ region['id'] }}">{{ region['region'] }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="tour_subregion">Sub Region</label>
+                                    <select class="form-control"  name="subregion" id="tour_subregion">
+                                        <option value="All" selected="selected">All</option>
+                                        <option *ngFor="let sregion of subRegionArray;" value="{{ sregion['id'] }}">{{ sregion['subregion'] }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="tour_type">Tour Type</label>
+                                    <select name="tour_type" id="tour_type" class="form-control">
+                                        <option value="All" selected="selected">All</option>
+                                        <option *ngFor="let tourType of tourTypearray;" value="{{ tourType['id'] }}">{{ tourType['tour_type'] }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="service_type">Service Type</label>
+                                    <select name="service_type" id="service_type" class="form-control">
+                                        <option value="All" selected="selected">All</option>
+                                        <option value="private">Private</option>
+                                        <option value="regular">Regular</option>
+                                        <option value="luxury">Luxury</option>
+                                        <option value="shore excursions">shore excursions</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <a class="btn btn-primary" (click)="searchRes()" style="width:100%">Search</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <!-- filter end -->
+            <div class="col-md-9" *ngIf="searchLoading == true">
+                <div class="col-md-12">
+                    <div class="col-md-2 col-md-offset-5">
+                        <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9" *ngIf="searchLoading == false">
+                <div class="col-md-12">
+                </div>
+
+                <div class="clearfix"></div>
+                <ul class="booking-list" *ngIf="arryCheck">
+                    <li *ngFor="let result of results.tour_data.result">
+                        <a class="booking-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="booking-item-img-wrap">
+                                        <img style="height: 130px"
+                                             src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/tours/{{result['tour_images']}}"
+                                             alt="{{result['tour_images']}}"
+                                             onError="this.src='https://flyantalya.api.smtech-solution.net/super-admin/uploads/tours/030616234076208.jpeg'">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-9 nopad">
+                                            <h4 class="booking-item-title">{{result['tour_name']}}</h4>
+                                            <p class="booking-item-address"><i
+                                                    class="fa fa-map-marker"></i> {{result['excursion_type'] | titleCaseWord}}
+                                            </p>
+                                            <small class="booking-item-last-booked">
+                                                {{ result['time'] }}
+                                            </small>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div *ngIf="citySearch" class="text-center"><span class="booking-item-price-from"></span><span
+                                                    class="booking-item-price"> 
+                                                {{ result['currency']}} {{ result['amount']  }}
+                                            </span>
+                                                <span></span>
+                                                <a class="btn btn-primary" [routerLink]="['/tourdetails']"
+                                                   [queryParams]="{ tour_id: result['tour_id'], tf_id: result['id'], request_data: results.requeststring, api_id: result['api_id'], session_id: result['session_id'] }">View Details</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <p> {{ result['tour_description'] | slice:0:300 }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </a>
+                    </li>
+                </ul>
+                <ul class="booking-list" *ngIf="arryCheck == false">
+                    <li>
+                        <a class="booking-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="booking-item-img-wrap">
+                                        <img style="height: 130px" src="assets/img/not-found.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="text-center"> Data Not Found</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

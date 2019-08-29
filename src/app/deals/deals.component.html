@@ -1,0 +1,305 @@
+<div class="Deals_m">
+    <div class="container">
+
+      <div class="gap">
+      <div class="row">
+          <div class="col-md-4">
+            <div class="lasmit">
+            <div class="tred_im">
+              <img src="assets/img/t1.jpg" alt=""/>  
+              <span class="psnj">LAST MINUTE</span>
+            </div>
+              <!-- <h3>Trendy Now <small ><a href="#">view all</a></small></h3> -->
+              <ul class="booking-list">
+               <li  *ngFor="let trends of trendyDeals">
+                <div class="booking-item booking-item-small">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="{{trends.ImgPath}}" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL de luxe" />
+                        </div>
+                        <div class="col-md-5">
+                            <h5 class="booking-item-title">{{trends.HotleName}}</h5>
+                            <ul class="icon-group booking-item-rating-stars">
+                                <li><i class="fa fa-star"></i>
+                                </li>
+                                <li><i class="fa fa-star"></i>
+                                </li>
+                                <li><i class="fa fa-star"></i>
+                                </li>
+                                <li><i class="fa fa-star"></i>
+                                </li>
+                                <li><i class="fa fa-star-half-empty"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-center"><span class="booking-item-price-from">Starting from</span><span class="booking-item-price">${{trends.Price}}</span><span class="booking-item-price-from">per Person Bed and Breakfast</span>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div class="col-md-4">
+        <div class="lasmit">
+         <div class="tred_im">
+              <img src="assets/img/t2.jpg" alt=""/>  
+              <span class="psnj">SPECIAL OFFER</span>
+            </div>
+     <!--  <h3>Hot Deals <small ><a href="#">view all</a></small></h3> -->
+      <ul class="booking-list">
+        <li  *ngFor="let top of topDeals">
+            <div class="booking-item booking-item-small">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{top.ImgPath}}" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL de luxe" />
+                    </div>
+                    <div class="col-md-5">
+                        <h5 class="booking-item-title">{{top.HotleName}}</h5>
+                        <ul class="icon-group booking-item-rating-stars">
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star-half-empty"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-center"><span class="booking-item-price-from">Starting from</span><span class="booking-item-price">${{top.Price}}</span><span class="booking-item-price-from">per Person All Inclusive</span>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+</div>
+<div class="col-md-4">
+    <div class="lasmit">
+     <div class="tred_im">
+              <img src="assets/img/t3.jpg" alt=""/>  
+              <span class="psnj">VILLAS AND SUITES</span>
+            </div>
+  <!-- <h3>Special for You <small ><a href="#">view all</a></small></h3> -->
+  <ul class="booking-list">
+    <li  *ngFor="let special of specialDeals">
+        <div class="booking-item booking-item-small">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{{special.ImgPath}}" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL de luxe" />
+                </div>
+                <div class="col-md-5">
+                    <h5 class="booking-item-title">{{special.HotleName}}</h5>
+                    <ul class="icon-group booking-item-rating-stars">
+                        <li><i class="fa fa-star"></i>
+                        </li>
+                        <li><i class="fa fa-star"></i>
+                        </li>
+                        <li><i class="fa fa-star"></i>
+                        </li>
+                        <li><i class="fa fa-star"></i>
+                        </li>
+                        <li><i class="fa fa-star-half-empty"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center"><span class="booking-item-price-from">Starting from</span><span class="booking-item-price">${{special.Price}}</span><span class="booking-item-price-from">per Person Ultra All Inclusive</span>
+                </div>
+            </div>
+        </div>
+
+    </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- hotel ad start here -->
+
+<div class="htl_ad">
+    <div class="ht_xt">
+
+        <div class="container">
+            <div class="col-md-3">
+                <img src="assets/img/bridge_1280x848.jpg" class="img-response">
+            </div>
+            <div class="col-md-6">
+                <div class="avrm">
+                    <h4 class="str">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </h4>
+                    <h3>Avantgarde Hotel Kemer nights</h3>
+                    <h4>QR573 - 03:45 Bengaluru Intl - 11:30 Antalya</h4>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="prsmin">
+                    <h3>3156 <span>USD</span></h3>
+                    <h5>2 Pax Hotel + Flight</h5>
+                    <h5><button class="btn btn-primary btn-lg w100">CONTINUE</button></h5>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+<!-- hotel ad end here -->
+
+
+<!-- deals of day start here -->
+<div class="day_deals">
+    <div class="container">
+       <div class="day_bx_mn">
+        <div class="col-md-3">
+           <div class="dell">
+            <h3>Deal of the Day</h3> 
+            <h4>Start your search for the best rates on our site</h4>  
+           </div> 
+        </div>
+        <div class="col-md-3">
+            <div class="daydel">
+               <div class="view view-first">
+                 <img src="assets/img/mypackage.jpg" />
+                 <div class="mask">
+                    <h2>My Packages</h2>
+                    <p>Create your own package<br/> and save up to 30%</p>
+                    <a href="#" class="info">View Details</a>
+                </div>
+            </div>   
+        </div>
+    </div>   
+        <div class="col-md-3">
+            <div class="daydel">
+               <div class="view view-first">
+                 <img src="assets/img/plr-2.png"/>
+                 <div class="mask">
+                    <h2>Flyantaliya.com</h2>
+                    <p>Browse now to book your <br/> packages to discover all places</p>
+                    <a href="#" class="info">View Details</a>
+                </div>
+            </div>   
+        </div>
+    </div> 
+        <div class="col-md-3">
+            <div class="daydel">
+               <div class="view view-first">
+                 <img src="assets/img/calista-logo.jpg" />
+                 <div class="mask">
+                    <h2>Best Hotel </h2>
+                    <p>Calista Hotel</p>
+                    <a href="#" class="info">View Details</a>
+                </div>
+            </div>   
+        </div>
+    </div> 
+</div>  
+
+ <div class="day_bx_mn">
+        <div class="col-md-3">
+           <div class="dell">
+            <h3>FAQ's</h3> 
+            <h4>Check here for the Frequently Asked Questions</h4>  
+           </div> 
+        </div>
+        <div class="col-md-3">
+            <div class="daydel">
+               <div class="view view-first">
+                 <img src="assets/img/faq1.jpg" />
+                 <div class="mask">
+                    <h2>E-Visa</h2>
+                    <p>In 3 Steps your e-Visa is Ready ! </p>
+                    <a href="#" class="info">View Details</a>
+                </div>
+            </div>   
+        </div>
+    </div>   
+        <div class="col-md-3">
+            <div class="daydel">
+               <div class="view view-first">
+                 <img src="assets/img/events.jpg"/>
+                 <div class="mask">
+                    <h2>What's up in antaliya</h2>
+                    <p>Make your stay an enjoyable one</p>
+                    <a href="#" class="info">View Details</a>
+                </div>
+            </div>   
+        </div>
+    </div> 
+        <div class="col-md-3">
+            <div class="daydel">
+               <div class="view view-first">
+                 <img src="assets/img/imperial-logo.jpg" />
+                 <div class="mask">
+                    <h2>Imperial Service</h2>
+                    <p>Turkey's luxury service provider.</p>
+                    <a href="#" class="info">View Details</a>
+                </div>
+            </div>   
+        </div>
+    </div> 
+</div> 
+</div>    
+</div>
+
+<!-- deals of day end here -->
+
+
+<!-- explore starts here -->
+<div class="exp_our lt_bg hide">
+    <div class="container">
+        <h2 class="mb20 text-center">Explore Our Top Destinations</h2>
+        <div class="row row-wrap">
+            <div class="col-md-4" *ngFor="let topdes of topDestinations" >
+                <div class="thumb">
+                    <header class="thumb-header">
+                        <a class="hover-img curved" href="#">
+                            <img src="{{topdes.ImgPath}}" alt="Image Alternative text" title="lack of blue depresses me" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                        </a>
+                    </header>
+                    <div class="thumb-caption">
+                        <h4 class="thumb-title">{{topdes.destination}}</h4>
+                        <p class="thumb-desc">{{topdes.Description}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Packages start here -->
+
+<div class="exp_our hide">
+    <div class="container">
+        <h2 class="mb20 text-center">The Best Packages</h2>
+        <div class="row row-wrap">
+            <div class="col-md-4" *ngFor="let bestpack of bestPackages">
+                <div class="thumb">
+                    <header class="thumb-header">
+                        <a class="hover-img curved" href="#">
+                            <img src="{{bestpack.ImgPath}}" alt="Image Alternative text" title="lack of blue depresses me" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                        </a>
+                    </header>
+                    <div class="thumb-caption">
+                        <h4 class="thumb-title">{{bestpack.destination}}</h4>
+                        <p class="thumb-desc">{{bestpack.Description}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>

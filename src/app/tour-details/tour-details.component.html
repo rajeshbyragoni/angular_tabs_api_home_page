@@ -1,0 +1,432 @@
+<app-header></app-header>
+<div class="mn_all">
+    <div class="mn bg4">
+        <div class="container" *ngIf="loading == true">
+            <div class="pdlod">
+                <div class="col-md-2 col-md-offset-5">
+                    <img src="/assets/Spinner-1s-200px.svg" alt="loading icon">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" *ngIf="loading == false">
+            <header class="booking-item-header">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2 class="lh1em">{{ tourName }}</h2>
+                        <p class="dscn">{{ request_data['city_name'] }} </p>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="tb_cnt">
+                        <!-- START LIGHTBOX GALLERY -->
+                        <div class="dts_img">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div *ngFor="let img of images; index as i"
+                                    class="item {{ i === 0 ? 'active' : '' }}">
+                                    <div class="bg-holder full">
+                                        <div class="bg-blur"><img
+                                            src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/tours/{{img}}"
+                                            alt="{{i}}" style="height: 350px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="clm100_sd">
+
+                            <h4>Price Summary</h4>
+
+                            <div class="frer_mn">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">Sub Total</div>
+                                        <div class="col-md-6 goldclr">{{c_a}} <span class="sub_total"></span></div>
+                                    </div></div></div>
+
+                                    <div class="frer_mn">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">Discount</div>
+                                                <div class="col-md-6 goldclr"></div>
+                                            </div></div></div>
+                                            <div class="frer_mn">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 tol">Total</div>
+                                                        <div class="col-md-6 goldclr tol"><span>{{c_a}}</span> <span class="fnlPrice"></span></div>
+                                                    </div></div></div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="container">
+                                            <ul class="nav nav-pills">
+                                                <li><a data-toggle="pill" href="#home">Tour Details</a></li>
+                                                <li><a data-toggle="pill" href="#menu1">Tour Itinerary</a></li>
+                                                <li class="active"><a data-toggle="pill" href="#menu2">Tour Pricing</a></li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="home" class="tab-pane fade">
+                                                     <div class="panel ozellikpanel">
+                                                   
+                                                        <div class="col-md-12">
+                                                            <table width="98%">
+                                                                <tr>
+                                                                    <td width="15%"><b>Tour Route:</b></td>
+                                                                    <td>{{ tour_det['tour_route'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Tour Operated:</b></td>
+                                                                    <td>{{ tour_det['tour_operated'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Meeting Point:</b></td>
+                                                                    <td>{{ tour_det['meeting_point'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Excursion For:</b></td>
+                                                                    <td>{{ tour_det['excursion_for'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Excursion Type:</b></td>
+                                                                    <td>{{ tour_det['excursion_type'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Transport:</b></td>
+                                                                    <td>{{ tour_det['transport'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Includes:</b></td>
+                                                                    <td>{{ tour_det['includes'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Excludes:</b></td>
+                                                                    <td>{{ tour_det['excludes'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Tour Description:</b></td>
+                                                                    <td>{{ tour_det['tour_description'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Restrictions:</b></td>
+                                                                    <td>{{ tour_det['restrictions'] }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="15%"><b>Notes:</b></td>
+                                                                    <td>{{ tour_det['notes'] }}</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                </div>
+                                                <div id="menu1" class="tab-pane fade">
+                                                     <div class="panel ozellikpanel">
+                                                    <div *ngFor="let days of tour_days; index as i">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-3 nopad">
+                                                                 <div class="itm_img">
+                                                                     <div class="rectagl_shap">
+                                                                <span class="num_days">Day &nbsp;{{ i }}</span>
+                                                                 <span class="tri_shap"></span>
+                                                            </div>
+                                                                <img src="https://flyantalya.api.smtech-solution.net/super-admin/uploads/tourration_images/{{ days['image'] }}"
+                                                                alt="{{ days['image'] }}">
+                                                            </div>
+                                                            </div>
+
+                                                         
+
+
+                                                        <div class="col-md-6">
+                                                            <div class="itm_cont">
+                                                            <span class="itm_head">{{ days['title'] }}</span>
+                                                            <p *ngIf="days['location_city_name']?.length > 0">City
+                                                            : {{ days['location_city_name'] }}</p>
+                                                            <p>Location : {{ days['area'] }}</p>
+                                                            <p>Description :{{ days['description'] }}></p>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-3"></div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="menu2" class="tab-pane fade in active">
+                                                <div class="remain_content">
+                                                    <form id="tourSubmitForm">
+                                                        <div class="con_over_visi">
+                                                            <div class="search_result">
+                                                                <div class="resultpetty">
+                                                                    <div class="panel ozellikpanel">
+                                                                        <table class="table   ">
+                                                                            <thead>
+                                                                                <tr style="text-align: center;">
+                                                                                    <th>#</th>
+                                                                                    <th>Unit Rate</th>
+                                                                                    <th>Pax</th>
+                                                                                    <th>Sub Total</th>
+                                                                                    <th>Total Price</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody style="color:#333;">
+
+                                                                                <tr>
+                                                                                    <input type="hidden" name="session_id" value="{{ tour_det['session_id']}}">
+                                                                                    <input type="hidden" name="meeting_point" value="{{  tour_det['meeting_point'] }}">
+                                                                                    <input type="hidden" name="baby_chair" value="{{ request_data['babychair'] | numPipe }}">
+                                                                                    <td width="15%">Adult ( {{tour_det['min_adult_age']}} - {{tour_det['max_adult_age']}} )</td>
+                                                                                    <td data-para="30" width="15%">USD {{ tour_det['adult_tmp_price_1'] }}
+                                                                                        <input type="hidden" id="per_adult_price" name="per_adult_price" value="{{ tour_det['adult_tmp_price'] | mathRound }}">
+                                                                                        <input type="hidden" id="service_type_a" name="service_type_a" value="{{ tour_det['service_type'] }}">
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="marginbotom10">
+                                                                                            <div class="selectedwrap">
+                                                                                                <select name="adult_count" id="adult_count" class="reset_room calculate mySelectBoxClass flyinputsnor valid form-control" aria-required="true" aria-invalid="false">
+                                                                                                    <option *ngFor="let act of aducnt" value="{{ act.id }}"  [selected]="act.value" >{{ act.id }}</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+
+
+                                                                                    <td data-para="30" class="toplam" width="15%">
+                                                                                        USD <span class="adult_total_price_span">500.00</span>
+                                                                                        <input type="hidden" id="adult_total_price" name="adult_total_price" class="adult_total_price" value="500.00">
+                                                                                    </td>
+
+                                                                                    <td rowspan="3" style="text-align: center;" width="15%">
+                                                                                        <div style="font-size:20px; text-align: center;">USD
+                                                                                            <span id="total_price_tag" class="total_price"> {{ tour_det['amount'] }}</span>
+                                                                                            <input type="hidden" value="{{ tour_det['amount'] }}" id="total_price" name="total_price">
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                                <tr *ngIf=" tour_det['search_child'] != 0 && tour_det['max_child'] != 0 && tour_det['max_child'] != '0' && tour_det['max_child'] != '' ">
+                                                                                    <td width="15%"> Child ( {{ tour_det['min_child_age'] }} - {{ tour_det['max_child_age'] }} )</td>
+                                                                                    <td width="15%" data-para="21">{{ c_a}} {{ tour_det['child_tmp_price'] |  mathRound }}
+                                                                                        <input type="hidden" id="per_child_price" name="per_child_price" value="{{ tour_det['child_tmp_price'] | mathRound }}">
+                                                                                        <input type="hidden" id="min_child_age" name="min_child_age" value="{{ tour_det['min_child_age'] }}">
+                                                                                        <input type="hidden" id="max_child_age" name="max_child_age" value="{{ tour_det['max_child_age'] }}">
+                                                                                    </td>
+                                                                                    <td width="15%">
+                                                                                        <div class="marginbotom10">
+                                                                                            <div class="selectedwrap">
+                                                                                                <select  id="child_count" name="child_count" class="form-control reset_room calculate mySelectBoxClass flyinputsnor valid" aria-required="true" aria-invalid="false">
+                                                                                                    <option *ngFor="let clnt of chilcnt" value="{{ clnt.id }}"  [selected]="clnt.value" >{{ clnt.id }}</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div id="child_age"></div>
+                                                                                    </td>
+                                                                                    <td width="15%" class="toplam" data-para="0">
+                                                                                        USD <span class="child_total_price_span">400.00</span>
+                                                                                        <input type="hidden" id="child_total_price" name="child_total_price" class="child_total_price" value="400.00">
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                                <tr *ngIf="request_data['infant_count'] != 0 && request_data['infant_count'] != 0 ">
+                                                                                    <td width="15%">Infant (1 - 2)</td>
+                                                                                    <td width="15%" data-para="0">
+                                                                                        USD 100 <input type="hidden" id="per_infant_price" name="per_infant_price" value=" {{tour_det['infant_tmp_price']}}">
+                                                                                    </td>
+                                                                                    <td width="15%">
+                                                                                        <div class="marginbotom10">
+                                                                                            <div class="selectedwrap">
+                                                                                                <select name="infant_count" id="infant_count" class="form-control reset_room mySelectBoxClass flyinputsnor valid" aria-required="true" aria-invalid="false">
+                                                                                                    <option *ngFor="let infc of infcnt" value="{{ infc.id }}"  [selected]="infc.value" >{{ infc.id }}</option>
+                                                                                                </select>
+                                                                                                Baby Chair:
+                                                                                                <select name="baby_chair" id="baby_chair" class="form-control calculate mySelectBoxClass flyinputsnor valid"  aria-required="true" aria-invalid="false">
+                                                                                                    <option value="0">0</option>
+                                                                                                    <option value="1">1</option>
+                                                                                                    <option value="2">2</option>
+                                                                                                    <option value="3">3</option>
+                                                                                                    <option value="4">4</option>
+                                                                                                    <option value="5">5</option>
+                                                                                                    <option value="6">6</option>
+                                                                                                    <option value="7">7</option>
+                                                                                                    <option value="8">8</option>
+                                                                                                    <option value="9">9</option>
+                                                                                                    <option value="10">10</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td class="toplam" data-para="0">
+                                                                                        USD <span class="infant_total_price">200.00</span>
+                                                                                        <input type="hidden" id="infant_total_price" name="infant_total_price" class="infant_total_price" value="200.00">
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                                <tr>
+                                                                                    <td data-para="30" class="toplam" width="35%"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+
+                                                                        <div class="col-md-12 ">
+                                                                            <div class="col-md-6">
+                                                                                <strong>
+                                                                                    Room Price : USD <span class="hotel_room_price">0.00</span>
+                                                                                    <input type="hidden" id="hotel_room_price"
+                                                                                    name="hotel_room_price" value="0.00"></strong>
+                                                                                    <input type="hidden" id="hotel_room_name" name="hotel_room_name"
+                                                                                    class="hotel_room_name">
+                                                                                </div>
+
+                                                                                <div class="col-md-4">
+                                                                                    <strong>
+                                                                                        Pickup Price : USD <span class="hotel_pickup_price">0.00</span>
+                                                                                    </strong>
+                                                                                </div>
+                                                                                <hr>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 nopad">
+                                                                                <div class="col-md-6 nopad">
+                                                                                    <div class="col-md-5 ">
+                                                                                        <span class="formlabel">Tour Date</span>
+                                                                                        <div class="input-group">
+                                                                                            <div class="relativemask">
+                                                                                                <span class="maskimg caln"></span>
+                                                                                                <input type="text" readonly placeholder="Tour Date" value="{{date_picker['departure_date']}}"
+                                                                                                class="form-control" required id="tour_date" name="tour_date" aria-required="true">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                    <div class="col-md-7">
+                                                                                        <div class="marginbotom10"><span
+                                                                                            class="formlabel">Pick-up point</span>
+                                                                                            <div class="selectedwrap">
+                                                                                                <input type="hidden" name="hotel_name"  id="hotel_name">
+                                                                                                <input type="hidden"  name="hotel_code" id="hotel_code">
+                                                                                                <select name="pickup_location" id="pickup_location" class="calculate mySelectBoxClass flyinputsnor valid form-control" aria-required="true" aria-invalid="false" required>
+                                                                                                    <option value="">Select Location</option>
+                                                                                                    <option  *ngFor="let pick of pickup"  value="{{pick['pick_id']}}" [attr.data-price]="pick['pickup_price_net']" [attr.hcode]="pick['hotel_code']" [attr.hname]="pick['hotel_name']">{{pick['pickup_type']}}-{{pick['hotel_name']}}-{{pick['zone_name']}}</option>
+                                                                                                    <option  *ngIf="pickup == null"  >No PickUp point Found</option>
+                                                                                                </select>
+                                                                                                <input type="hidden" id="pickup_price" name="pickup_price" value="0.00">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="col-md-3">
+                                                                                    <div class="marginbotom10"> <span class="formlabel">
+                                                                                        <span class="formlabel">Extra Payment</span>
+                                                                                        <div class="selectedwrap">
+                                                                                            <select name="extra_payment" id="extra_payment" class="form-control calculate mySelectBoxClass flyinputsnor valid" required aria-required="true" aria-invalid="false">
+                                                                                                <option value="">None</option>
+                                                                                                <option *ngFor="let exp of extraPay" value="{{ exp['key'] }}">{{ exp['value'] }}</option>
+                                                                                            </select>
+                                                                                            <input type="hidden" name="currency" value="USD">
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <div class="marginbotom10">
+                                                                                    <span class="formlabel">Spoken Language</span>
+                                                                                    <div class="input-group">
+                                                                                        <div class="relativemask selectedwrap"><span
+                                                                                            class="maskimg caln"></span>
+                                                                                            <select required name="spoken_lang" id="spoken_lang" class="form-control calculate mySelectBoxClass flyinputsnor valid" aria-required="true" aria-invalid="false">
+                                                                                                <option *ngFor="let lan of lang" value="{{ lan }}">{{ lan  | uppercase }}</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row" style="padding-bottom: 3%">&nbsp;</div>
+                                                                        <div class="col-md-12 nopad">
+                                                                            <div class="col-md-4">
+                                                                                <div class="marginbotom10"><span
+                                                                                    class="formlabel">Nationality</span>
+                                                                                    <div class="selectedwrap">
+                                                                                        <select name="nationality" id="nationality" class="mySelectBoxClass flyinputsnor valid form-control" aria-required="true" aria-invalid="false" required>
+                                                                                            <option *ngFor="let country of countryArray;" value="{{ country['country_code'] }}">{{ country['country_name']}}</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <!-- 2 full column over -->
+
+                                                                        <!-- Hotel selection details tab-->
+                                                                        <div class="col-md-12 nopad">
+                                                                            <br>
+                                                                        </div>
+                                                                        <!-- Hotel -->
+                                                                        <input type="hidden" name="daydiff" id="daydiff" value="{{ request_data['daydiff'] }}">
+                                                                        <input type="hidden" name="totaltourdays" id="totaltourdays" value="{{  tour_days.length }}">
+
+                                                                        <!-- End hotel selection div tab -->
+                                                                             
+                                                                        <div class="col-md-6">
+                                                                             <span class="formlabel">Available Weekdays</span>
+                                                                            <div class="col-md-12 nopad">
+                                                                                <div class="input-group">
+                                                                                    <div class="relativemask ">
+                                                                                       <span *ngFor="let item of wkdays; index as i">
+                                                                                           {{ weekarray[item]}} &nbsp;
+                                                                                       </span>
+                                                                                   </div>
+                                                                               </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 nopad">
+                                                                            <div class="col-md-4 pull-right">
+                                                                                <input type="hidden" name="uid" value="{{ request_data['uid'] }}">
+                                                                                <button *ngIf="pickup != null " (click)="addToCart()" class="flightbook tourBook bt_sva btn " data-attr="" style="text-align: center;">Book Now
+                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="display: none;" id="spin" class="fa fa-spinner fa-spin"></i></button>
+                                                                                    <button *ngIf="pickup == null " class="flightbook tourBook bt_sva btn" disabled data-attr="" style="text-align: center;">Hotel Not Found</button>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       </form>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <app-footer></app-footer>

@@ -1,0 +1,142 @@
+<app-header></app-header>
+<div class="dashboard">
+	<div class="container">
+		<div class="col-md-3">
+			<app-b2bsidebar></app-b2bsidebar>
+		</div>
+
+		<div class="col-md-9">
+			<div class="col-md-12">
+                <h4>Country Markup</h4>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                       <li class=""><a href="#add_amrkup" data-toggle="tab">Add Markup</a>
+                       </li>
+                       <li class="active"><a href="#view_markup" data-toggle="tab">View Markup</a>
+                       </li>
+
+                   </ul>
+                   <div class="tab-content">
+                    <div class="tab-pane fade active in" id="view_markup">
+                        <p class="mt10">
+                        </p><table class="table table-bordered table-striped table-booking-history">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+
+                                    <th>Product</th>
+
+                                    <th>Country</th>
+
+                                    <th>City</th>
+
+                                    <th>Markup</th>
+
+                                    <th>Markup Type</th>
+
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let cnty of country_markup; index as i">
+                               <td>{{i+1}}</td> 
+                               <td>{{cnty.product_name}}</td> 
+                               <td>{{cnty.country_code}}</td> 
+                               <td>{{cnty.city_code}}</td> 
+                               <td>{{cnty.markup_value}}</td> 
+                               <td>{{cnty.amount_type}}</td> 
+                               <td>Update</td> 
+                              </tr>
+                            </tbody>
+                        </table>
+                        <p></p>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="add_amrkup">
+                        <p class="mt10">
+                        </p><div class="col-md-8">
+                          <form [formGroup]="countryForm">
+                            <div class="form-group">
+                                <label>Product *</label>
+                                <select id="country_product_id" name="product_id" class="product_change form-control typecodeans notypmar valid" formControlName="product_id" #product_id>
+                                  <option value="">--Choose Product--</option>
+                                  <option value="1">FLIGHT</option>
+                                  <option value="2">HOTEL</option>
+                              </select>
+                              <div
+                    *ngIf="countryForm.controls['product_id'].invalid && (countryForm.controls['product_id'].dirty ||  countryForm.controls['product_id'].touched)"
+                    class="text-danger">
+                    <div *ngIf="countryForm.controls['product_id'].errors.required">
+                      product id is required.
+                    </div>
+                  </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Country </label>
+                             <select class="form-control" formControlName="country" (change)="countryChange(country.value)" #country>
+                                <option value="" selected="">Select Country</option>
+                                <option *ngFor="let city of countryArray" [value]="city.country_code">{{city.country_name}}</option>
+                            </select>
+                              <div
+                    *ngIf="countryForm.controls['country'].invalid && (countryForm.controls['country'].dirty ||  countryForm.controls['country'].touched)"
+                    class="text-danger">
+                    <div *ngIf="countryForm.controls['country'].errors.required">
+                      product id is required.
+                    </div>
+                  </div>
+                       </div>
+
+
+                       <div class="form-group">
+                        <label>City *</label>
+                        <div id="cities">
+                         <i class="fa fa-spinner fa-spin" id="country_spinner" style="display:none;"></i>
+                     </div></div>
+
+                     <div class="form-group">
+                        <label>Current Markup </label>
+                        <input value="" min="0" max="100"  name="Markup" class="form-control typecodeans notypmar valid" type="number" formControlName="Markup" #Markup>
+
+                        <input value="COUNTRY" name="type" class="typecodeans notypmar" type="hidden">
+                         <div
+                    *ngIf="countryForm.controls['Markup'].invalid && (countryForm.controls['Markup'].dirty ||  countryForm.controls['Markup'].touched)"
+                    class="text-danger">
+                    <div *ngIf="countryForm.controls['Markup'].errors.required">
+                      product id is required.
+                    </div>
+                  </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Markup Type </label>
+                        <select id="markup_type" name="markup_type" class="form-control typecodeans notypmar valid" formControlName="markup_type" #markup_type>
+                          <option value="">Choose Markup Type</option>
+                          <option value="percentage">Percentage</option>
+                          <option value="amount" selected="">Amount</option>
+                      </select>
+                       <div
+                    *ngIf="countryForm.controls['markup_type'].invalid && (countryForm.controls['markup_type'].dirty ||  countryForm.controls['markup_type'].touched)"
+                    class="text-danger">
+                    <div *ngIf="countryForm.controls['markup_type'].errors.required">
+                      product id is required.
+                    </div>
+                  </div>
+                  </div>
+                 
+                  <button type="submit" class="bt_n" [disabled]="countryForm.pristine || countryForm.invalid" (click)="countryFormClick(product_id.value, country.value, Markup.value, markup_type.value)">
+                   
+                Add Markup</button>
+            </form>
+        </div>
+        <p></p>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<app-footer></app-footer>

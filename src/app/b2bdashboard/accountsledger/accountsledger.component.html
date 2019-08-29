@@ -1,0 +1,45 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+            <div role="tabpanel" class="tab-pane" id="tab4">
+                <div class="tbnew">
+                    <h1>Accounts Ledger
+                        <button class="btn btn-primary pull-right">Balance Amount : 10936.26 US$</button>
+                    </h1>
+                    <div class="tbl_m">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>TX No</th>
+                                    <th>Date</th>
+                                    <th width="25%">Statement</th>
+                                    <th width="5%">Deposit</th>
+                                    <th width="5%">Withdraw</th>
+                                    <th>Balance Amount</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of actSteMntData; index as i">
+                                        <td [innerHTML]="item.transaction_number"></td>
+                                        <td>{{item.created_date_time | date:'yyyy-MM-dd'}}</td>
+                                        <td>{{item.transaction_type}} - : {{item.created_date_time | date:'yyyy-MM-dd'}}</td>
+                                        <td>{{ item.transaction_type === 'DEPOSIT' ? item.amount : '-'}}</td>
+                                        <td>{{ item.transaction_type === 'WITHDRAW' ? item.amount : '-'}}</td>
+                                        <td>{{item.balance_amount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

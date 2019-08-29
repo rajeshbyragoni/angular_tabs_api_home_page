@@ -1,0 +1,362 @@
+<app-header></app-header>
+<div class="container">
+    <div class="gap"></div>
+
+    <h3 class="page-title-changes">Agency Registration</h3>
+
+    <form [formGroup]="registerForm" novalidate="novalidate">
+        <div class="container">
+            <div id="registartion_form">
+                <div class="row" data-gutter="60">
+                    <div class="col-md-4">
+                        <h4>Agency Basic Details</h4>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Agency Name *</label>
+                            <input type="text" formControlName="agencyName" class="form-control" placeholder="please enter Agency Name" #agencyName>
+                                <div *ngIf="registerForm.controls['agencyName'].invalid && (registerForm.controls['agencyName'].dirty ||  registerForm.controls['agencyName'].touched)" class="text-danger">
+                                    <div *ngIf="registerForm.controls['agencyName'].errors.required">
+                                        Agency Name is required.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-lock input-icon input-icon-show"></i>
+                            <label>Country * </label>
+                            <select class="form-control" formControlName="country" (change)="countryChange(country.value)" #country>
+                                <option value="" selected="">Select Country</option>
+                                <option *ngFor="let city of countryArray" [value]="city.country_code">{{city.country_name}}</option>
+                            </select>
+                            <div
+                                *ngIf="registerForm.controls['country'].invalid && (registerForm.controls['country'].dirty ||  registerForm.controls['country'].touched)"
+                                class="text-danger">
+                                <div *ngIf="registerForm.controls['country'].errors.required">
+                                    country is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Phone *</label>
+                            <input type="text" class="form-control" formControlName="c_phone" placeholder="Please Enter Phone No" #c_phone>
+                            <div *ngIf="registerForm.controls['c_phone'].invalid && (registerForm.controls['c_phone'].dirty ||  registerForm.controls['c_phone'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['c_phone'].errors.required">
+                                    Phone Number is required.
+                                </div>
+                                <div *ngIf="registerForm.controls['c_phone'].errors?.pattern">
+                                    Phone Number Invalid.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Website *</label>
+                            <input type="text" class="form-control" formControlName="Website" placeholder="Enter the website address" #Website>
+                            <div *ngIf="registerForm.controls['Website'].invalid && (registerForm.controls['Website'].dirty ||  registerForm.controls['Website'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['Website'].errors.required">
+                                    Website is required.
+                                </div>
+                                <div *ngIf="registerForm.controls['Website'].errors?.pattern">
+                                    Website Invalid.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Contact Person Name *</label>
+                            <input type="text" class="form-control" formControlName="c_person" placeholder="Enter Contact person Name" #c_person>
+                            <div *ngIf="registerForm.controls['c_person'].invalid && (registerForm.controls['c_person'].dirty ||  registerForm.controls['c_person'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['c_person'].errors.required">
+                                    Contact Person is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>&nbsp;</h3>
+                        <div class="form-group form-group-icon-left"><i
+                                class="fa fa-user input-icon input-icon-show"></i>
+                                <label>Type of Company *</label>
+                                <select class="form-control valid" formControlName="company" #company>
+                                <option value="">Choose</option>
+                                <option value="Travel Agent">Travel Agent</option>
+                                <option value="Wholesaler">Wholesaler</option>
+                                <option value="Travel Switch">Travel Switch</option>
+                                <option value="Tour Operator">Tour Operator</option>
+                                <option value="Airline">Airline</option>
+                            </select>
+                            <div *ngIf="registerForm.controls['company'].invalid && (registerForm.controls['company'].dirty ||  registerForm.controls['company'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['company'].errors.required">
+                                    Company is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-envelope input-icon input-icon-show"></i>
+                            <label>City *</label>
+                            <select class="form-control" formControlName="city" #city>
+                                <option value="" selected>Select City</option>
+                                <option *ngFor="let city of stateArray" [value]="city.city_name">{{city.city_name}}</option>
+                            </select>
+                            <div *ngIf="registerForm.controls['city'].invalid && (registerForm.controls['city'].dirty ||  registerForm.controls['city'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['city'].errors.required">
+                                    City is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-lock input-icon input-icon-show"></i>
+                            <label>Mobile *</label>
+                            <input type="text" class="form-control" formControlName="contact_no" placeholder="Enter mobile number" #contact_no>
+                            <div *ngIf="registerForm.controls['contact_no'].invalid && (registerForm.controls['contact_no'].dirty ||  registerForm.controls['contact_no'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['contact_no'].errors.required">
+                                    Mobile is required.
+                                </div>
+                                <div *ngIf="registerForm.controls['contact_no'].errors?.pattern">
+                                    Mobile Number Invalid.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-lock input-icon input-icon-show"></i>
+                            <label>Contact Person Surname *</label>
+                            <input type="text" class="form-control" formControlName="Surname" placeholder="please enter Surname" #Surname>
+                            <div *ngIf="registerForm.controls['Surname'].invalid && (registerForm.controls['Surname'].dirty ||  registerForm.controls['Surname'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['Surname'].errors.required">
+                                    Surname is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-icon-left">
+                            <i class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Profile Picture * --<b>{{profileName}}</b></label>
+                            <button class="btn btn-info btn-block" type="button" #upload (click)="fileInput.click()">
+                                <i class="fa fa-upload"></i>&nbsp;&nbsp;
+                                <span class="bold">Upload Photo</span></button>
+                            <input type="file" name="profile_picture" (change)="fileChange($event)" #fileInput
+                                   formControlName="profile_picture" style="display: none;"/>
+
+                        </div>
+
+                </div>
+                    <div class="col-md-4">
+                        <h3>&nbsp;</h3>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Prefered Currency *</label>
+                                <select class="form-control valid" formControlName="currency" #currency>
+                                    <option value="" selected>Select currency</option>
+                                    <option *ngFor="let currency of currencyArray" [value]="currency.currency_code">{{currency.currency_code}}</option>
+                                </select>
+                                <div *ngIf="registerForm.controls['currency'].invalid && (registerForm.controls['currency'].dirty ||  registerForm.controls['currency'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['currency'].errors.required">
+                                    Currency is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-envelope input-icon input-icon-show"></i>
+                            <label>Post Code *</label>
+                            <input type="text" class="form-control" formControlName="o_pin"  placeholder="please enter postal code" #o_pin />
+                            <div *ngIf="registerForm.controls['o_pin'].invalid && (registerForm.controls['o_pin'].dirty ||  registerForm.controls['o_pin'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['o_pin'].errors.required">
+                                    Post Code is required.
+                                </div>
+                                <div *ngIf="registerForm.controls['o_pin'].errors?.pattern">
+                                    Post Code Number Invalid.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-icon-left"><i
+                            class="fa fa-lock input-icon input-icon-show"></i>
+                            <label>Fax </label>
+                            <input type="text" class="form-control" formControlName="Fax" placeholder="Enter Fax number" #Fax>
+                            <div *ngIf="registerForm.controls['Fax'].invalid && (registerForm.controls['Fax'].dirty ||  registerForm.controls['o_pin'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['Fax'].errors.required">
+                                    Fax is required.
+                                </div>
+                                <div *ngIf="registerForm.controls['Fax'].errors?.pattern">
+                                    Fax Number Invalid.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-group-icon-left">
+                            <i class="fa fa-lock input-icon input-icon-show"></i>
+                            <label>Position/Role *</label>
+                            <input type="text" class="form-control" formControlName="c_designation" placeholder="please enter position role" #c_designation>
+                            <div *ngIf="registerForm.controls['c_designation'].invalid && (registerForm.controls['c_designation'].dirty ||  registerForm.controls['c_designation'].touched)" class="text-danger">
+                                <div *ngIf="registerForm.controls['c_designation'].errors.required">
+                                    Designation is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" data-gutter="60">
+                <div class="col-md-4">
+                    <h4>Administration Details</h4>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-lock input-icon input-icon-show"></i>
+                        <label>E-mail For Registration *</label>
+                        <input type="email" formControlName="Email" class="form-control" placeholder="Please Enter Valid Email Address" #Email>
+                        <div *ngIf="registerForm.controls['Email'].invalid && (registerForm.controls['Email'].dirty ||  registerForm.controls['Email'].touched)" class="text-danger">
+                            <div *ngIf="registerForm.controls['Email'].errors.required">
+                                Email is required.
+                            </div>
+                            <div *ngIf="registerForm.controls['Email'].errors.pattern">
+                                Email Address is Invalid.
+                            </div>
+                        </div>
+                        <div *ngIf="emailError" class="text-danger">Email Already Exists</div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <h3>&nbsp;</h3>
+                    <div class="form-group form-group-icon-left form-group-filled"><i
+                        class="fa fa-lock input-icon input-icon-show"></i>
+                        <label>Password For Registration *</label>
+                        <div class="pwdwidgetdiv">
+
+                            <!--<input type="password" placeholder="Password" class="form-control padpas valid" name="new_password" style="border: 1px solid rgb(245, 44, 44); display: none;"/>-->
+                            <div class="input-group">
+                                <input type="password" class="form-control newpassword"  placeholder="New Password" id="new_password" formControlName="new_password" #new_password>
+                                <span class="input-group-addon"><i id="eye" class="fa fa-eye"></i></span>
+                            </div>
+                            <div *ngIf="registerForm.controls['new_password'].invalid && (registerForm.controls['new_password'].dirty)" class="text-danger">
+                                <div *ngIf="registerForm.controls['new_password'].errors?.required">
+                                    New Password is required.
+                                </div>
+                                <div *ngIf="registerForm.controls['new_password'].errors?.minlength">
+                                    Please enter at least 5 characters.
+                                </div>
+                            </div>
+
+                            <div class="wrapgen">
+                                <div class="pwdopsdiv divcol2" id="new_password_gendiv">
+                                    <a class="generate" id="new_password_gen_anch" (click)="clickGenerate()">Generate</a></div>
+                                </div>
+                                <div class="pwdstrength" id="new_password_strength_div">
+                                    <div class="pwdstrengthstr" id="new_password_strength_str">Password strenght: <span class="strenght" id="strenght">Fair</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>&nbsp;</h3>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-user input-icon input-icon-show"></i>
+                        <label>Re-Type Password *</label>
+                        <input type="password" class="form-control form-group-icon-left" id="confirm_password" formControlName="confirm_password" placeholder="Confirm Password" #confirm_password/>
+                        <div *ngIf="registerForm.controls['confirm_password'].invalid && (registerForm.controls['confirm_password'].dirty)" class="text-danger">
+                            <div *ngIf="registerForm.controls['confirm_password'].errors?.required">
+                                Confirm Password is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" data-gutter="60">
+                <div class="col-md-4">
+                    <h4>Extra Information</h4>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-user input-icon input-icon-show"></i>
+                        <label>IATA *</label>
+                        <input type="text" class="form-control" formControlName="Iata" placeholder="please enter Iata" #Iata>
+                        <div *ngIf="registerForm.controls['Iata'].invalid && (registerForm.controls['Iata'].dirty ||  registerForm.controls['Iata'].touched)" class="text-danger">
+                            <div *ngIf="registerForm.controls['Iata'].errors.required">
+                                Iata is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-user input-icon input-icon-show"></i>
+                        <label>Address *</label>
+                        <textarea class="form-control" cols="20" id="o_address" formControlName="o_address" rows="2" placeholder="please enter address" #o_address></textarea>
+                        <div *ngIf="registerForm.controls['o_address'].invalid && (registerForm.controls['Iata'].dirty ||  registerForm.controls['o_address'].touched)" class="text-danger">
+                            <div *ngIf="registerForm.controls['o_address'].errors.required">
+                                Address is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>&nbsp;</h3>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-user input-icon input-icon-show"></i>
+                        <label>Trade License Number *</label>
+                        <input type="text" class="form-control" formControlName="licence_number"  placeholder="please enter Trade License Number">
+                        <div *ngIf="registerForm.controls['licence_number'].invalid && (registerForm.controls['licence_number'].dirty ||  registerForm.controls['licence_number'].touched)" class="text-danger">
+                            <div *ngIf="registerForm.controls['licence_number'].errors.required">
+                                Trade License Number is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-user input-icon input-icon-show"></i>
+                        <label>How did you hear about us? *</label>
+                        <textarea class="form-control" cols="20" formControlName="HowHear" rows="2" placeholder="How did you hear about us?" #HowHear></textarea>
+                        <div *ngIf="registerForm.controls['HowHear'].invalid && (registerForm.controls['HowHear'].dirty ||  registerForm.controls['HowHear'].touched)" class="text-danger">
+                            <div *ngIf="registerForm.controls['HowHear'].errors.required">
+                                please enter how you hear about us
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>&nbsp;</h3>
+                    <div class="form-group form-group-icon-left">
+                        <i class="fa fa-user input-icon input-icon-show"></i>
+                        <label>Trade License Photo * --<b>{{licenseName}}</b></label>
+                        <button class="btn btn-info btn-block" type="button" (click)="fileInputLiesense.click()"><i class="fa fa-upload"></i>&nbsp;&nbsp;
+                            <span class="bold">Upload Photo</span></button>
+                        <input type="file" (change)="fileChangeLiesense($event)" #fileInputLiesense
+                               formControlName="license_picture" style="display: none;"/>
+                        <div *ngIf="registerForm.controls['license_picture'].invalid && (registerForm.controls['license_picture'].dirty ||  registerForm.controls['license_picture'].touched)" class="text-danger">
+                            <div *ngIf="registerForm.controls['license_picture'].errors.required">
+                                please enter how you hear about us
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" data-gutter="60">
+                <div class="col-md-4">
+                    <h4>&nbsp;</h4>
+                    <div class="form-group form-group-icon-left">
+                        <label>&nbsp;</label>
+                        <button class="btn btn-primary ui-button ui-corner-all ui-widget" (click)="registerClick(agencyName.value, country.value, c_phone.value, Website.value, c_person.value,
+                         company.value, city.value, contact_no.value, Surname.value, currency.value, o_pin.value, Fax.value, c_designation.value, Email.value, new_password.value,
+                         confirm_password.value, Iata.value, o_address.value, HowHear.value)">
+                            <i class="fa fa-spinner fa-spin" id="agency_signups" style="display:none;"></i>Sign Up
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>&nbsp;</h3>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-lock input-icon input-icon-show"></i>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>&nbsp;</h3>
+                    <div class="form-group form-group-icon-left"><i
+                        class="fa fa-lock input-icon input-icon-show"></i>
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

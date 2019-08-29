@@ -1,0 +1,103 @@
+<footer id="main-footer">
+    <div class="container">
+        <div class="row row-wrap">
+            <div class="col-md-3">
+                <div class="lg_ftr">
+                    <h3>Flyantalya</h3>
+                    <!-- <a class="logo" href="">
+                        <img src="assets/img/logo.png" alt="Image Alternative text" title="Image Title"/>
+                    </a> -->
+               
+                <p class="mb20">Booking, reviews and advices on hotels, resorts, flights,  vacation <br/> rentals, travel
+                packages, and lots <br/> more!</p>
+
+                <span  *ngIf="socialpagelink.status == true">
+                    <ul class="list list-horizontal list-space" *ngFor="let sociallink of socialpagelink.data">
+                        <li *ngIf="(sociallink.name ==='facebook')">
+                            <a class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" target="_blank" href="{{sociallink.url}}"></a>
+                        </li>
+                        <li *ngIf="(sociallink.name ==='twitter')">
+                            <a class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" target="_blank" href="{{sociallink.url}}"></a>
+                        </li>
+                        <li *ngIf="(sociallink.name ==='google')">
+                            <a class="fa fa-google-plus box-icon-normal round animate-icon-bottom-to-top" target="_blank" href="{{sociallink.url}}"></a>
+                        </li>
+                        <li *ngIf="(sociallink.name ==='linkedin')">
+                            <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" target="_blank" href="{{sociallink.url}}"></a>
+                        </li>
+                        <li *ngIf="(sociallink.name ==='pinterest')">
+                            <a class="fa fa-pinterest box-icon-normal round animate-icon-bottom-to-top" target="_blank" href="{{sociallink.url}}git "></a>
+                        </li>
+
+                    </ul>
+                </span>
+            </div> </div>
+
+          
+            <div class="col-md-3">
+                 <div class="lg_ftr">
+                    <h3>Special Packages</h3>
+                <ul class="list list-footer">
+                    <li><a href="#"><i class="fa fa-chevron-circle-right icr"></i> Promotions</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-chevron-circle-right icr"></i>   Wallet Offers</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-chevron-circle-right icr"></i>  Bestsellers</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-chevron-circle-right icr"></i>  Simple Pleasures</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-chevron-circle-right icr"></i>   Popular Villas</a>
+                    </li>
+                    <li><a routerLink="/user-register"><i class="fa fa-chevron-circle-right icr"></i>  user-register</a></li>
+
+                    
+                </ul>
+            </div>
+        </div>
+            <div class="col-md-3">
+                 <div class="lg_ftr">
+                    <h3>Have Questions?</h3>
+                <div class="hvg">
+                   
+                    <h4 class="text-color">+1-202-555-0173</h4>
+                    <h4><a href="#" class="text-color">support@traveler.com</a></h4>
+                    <p class="f14">24/7 Dedicated Customer Support</p>
+                </div>
+            </div>
+            </div>
+
+              <div class="col-md-3">
+                <div class="lg_ftr">
+                    <h3>Newsletter</h3>
+
+                    <form [formGroup]="SubscribeForm">
+                        <label class="eml">Enter your E-mail Address</label>
+
+                        <input formControlName="email" class="form-control" type="text" placeholder="Enter Email" #email/>
+                        <div *ngIf="SubscribeForm.controls['email'].invalid && (SubscribeForm.controls['email'].dirty || SubscribeForm.controls['email'].touched)"
+                        class="text-danger">
+                        <div *ngIf="SubscribeForm.controls['email'].errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="SubscribeForm.controls['email'].errors.pattern">
+                            Invalid Email ID
+                        </div>
+                    </div>
+
+                    <p class="mt5">
+                        <small class="nvr">*We Never Send Spam</small>
+                    </p>
+                    <input type="submit" (click)="Subscribe(email.value)" [disabled]="SubscribeForm.pristine || SubscribeForm.invalid" class="btn btn-primary"
+                    value="Subscribe">
+                    <p *ngIf="SuscribeMsg.status" class="mt5">
+                        <small>{{SuscribeMsg.msg}}</small>
+                        <p *ngIf="!SuscribeMsg.status" class="mt5">
+                            <small>{{SuscribeMsg.msg}}</small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

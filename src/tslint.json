@@ -1,0 +1,32 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "directive-selector": [
+            true,
+            "attribute",
+            "app",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "app",
+            "kebab-case"
+        ],
+        "max-line-length": [
+            false
+        ]
+    },
+    "no-shadowed-variable": [
+        false,
+        {
+            "class": true,
+            "enum": true,
+            "function": true,
+            "interface": false,
+            "namespace": true,
+            "typeAlias": false,
+            "typeParameter": false
+        }
+    ]
+}

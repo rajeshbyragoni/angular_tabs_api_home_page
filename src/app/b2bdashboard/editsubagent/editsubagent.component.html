@@ -1,0 +1,294 @@
+<app-header></app-header>
+<div class="dashboard">
+	<div class="container">
+		<div class="col-md-3">
+			<app-b2bsidebar></app-b2bsidebar>
+		</div>
+		<div class="col-md-9">
+			<div class="col-md-12">
+				<h1>Edit Agencies</h1>
+				<div class="tabbable">
+
+					<div role="tabpanel" class="tab-pane" id="tab8">
+                <div class="tbnew">
+							<div class="panel-body">
+								<div class="row row-wrap">
+									 <form [formGroup]="editSubagentForm">
+                                        <input type="hidden" name="user_type_name" value="SAGY">
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label>Company Name *</label>
+
+                                                <input placeholder="Company Name" class="form-control"
+                                                       formControlName="company" name="company" type="text" #company>
+                                                <div *ngIf="editSubagentForm.controls['company'].invalid && (editSubagentForm.controls['company'].dirty ||  editSubagentForm.controls['company'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['company'].errors.required">
+                                                        banking type is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>IATA Code *</label>
+
+                                                <input placeholder="IATA Code" class="form-control" name="iata"
+                                                       type="text" formControlName="iata" #iata>
+                                                <div *ngIf="editSubagentForm.controls['iata'].invalid && (editSubagentForm.controls['iata'].dirty ||  editSubagentForm.controls['iata'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['iata'].errors.required">
+                                                        IATA Code is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>No of Branches *</label>
+
+                                                <input placeholder="No of Branches" class="form-control valid"
+                                                       name="no_branch" type="number" formControlName="no_branch"
+                                                       #no_branch>
+                                                <div *ngIf="editSubagentForm.controls['no_branch'].invalid && (editSubagentForm.controls['no_branch'].dirty ||  editSubagentForm.controls['no_branch'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['no_branch'].errors.required">
+                                                        No of Branches is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Contact Person *</label>
+
+                                                <input placeholder="Contact Person" class="form-control" name="c_person"
+                                                       type="text" formControlName="c_person" #c_person>
+                                                <div *ngIf="editSubagentForm.controls['c_person'].invalid && (editSubagentForm.controls['c_person'].dirty ||  editSubagentForm.controls['c_person'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['c_person'].errors.required">
+                                                        Contact Person is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Designation *</label>
+                                                <input placeholder="Designation" class="form-control"
+                                                       name="c_designation" type="text" formControlName="c_designation"
+                                                       #c_designation>
+                                                <div *ngIf="editSubagentForm.controls['c_designation'].invalid && (editSubagentForm.controls['c_designation'].dirty ||  editSubagentForm.controls['c_designation'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['c_designation'].errors.required">
+                                                        Designation is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Email *</label>
+                                                <input placeholder="Email" class="form-control" name="c_email"
+                                                       formControlName="c_email" type="text" #c_email>
+                                                <div *ngIf="editSubagentForm.controls['c_email'].invalid && (editSubagentForm.controls['c_email'].dirty ||  editSubagentForm.controls['c_email'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['c_email'].errors.required">
+                                                        Email is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label>Phone *</label>
+                                                <input placeholder="Phone" class="form-control" name="c_phone"
+                                                       formControlName="c_phone" type="text" #c_phone>
+                                                <div *ngIf="editSubagentForm.controls['c_phone'].invalid && (editSubagentForm.controls['c_phone'].dirty ||  editSubagentForm.controls['c_phone'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['c_phone'].errors.required">
+                                                        Phone is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Address *</label>
+                                                <textarea placeholder="Address" class="form-control" name="o_address"
+                                                          formControlName="o_address" #o_address></textarea>
+                                                <div *ngIf="editSubagentForm.controls['o_address'].invalid && (editSubagentForm.controls['o_address'].dirty ||  editSubagentForm.controls['o_address'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['o_address'].errors.required">
+                                                        Address is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>City *</label>
+                                                <input placeholder="City" class="form-control" name="o_city" type="text"
+                                                       formControlName="o_city" #o_city>
+                                                <div *ngIf="editSubagentForm.controls['o_city'].invalid && (editSubagentForm.controls['o_city'].dirty ||  editSubagentForm.controls['o_city'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['o_city'].errors.required">
+                                                        City is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--<div class="form-group">-->
+                                                <!--<label>Country *</label>-->
+                                                <!--<select class="form-control" formControlName="country" (change)="countryChange(country.value)" #country>-->
+                                                    <!--<option value="" selected="">Select Country</option>-->
+                                                    <!--<option *ngFor="let city of countryArray" [value]="city.country_code">{{city.country_name}}</option>-->
+                                                <!--</select>-->
+                                                <!--<div *ngIf="editSubagentForm.controls['country'].invalid && (editSubagentForm.controls['country'].dirty ||  editSubagentForm.controls['country'].touched)"-->
+                                                     <!--class="text-danger">-->
+                                                    <!--<div *ngIf="editSubagentForm.controls['country'].errors.required">-->
+                                                        <!--Country is required.-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                            <div class="form-group">
+                                                <label>Pin Code *</label>
+                                                <input placeholder="Pin Code" class="form-control" name="o_pin"
+                                                       formControlName="o_pin" type="text" #o_pin>
+                                                <div *ngIf="editSubagentForm.controls['o_pin'].invalid && (editSubagentForm.controls['o_pin'].dirty ||  editSubagentForm.controls['o_pin'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['o_pin'].errors.required">
+                                                        Pin Code is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Phone Number *</label>
+                                                <input placeholder="Phone Number" class="form-control" name="contact_no"
+                                                       type="text" formControlName="contact_no" #contact_no>
+                                                <div *ngIf="editSubagentForm.controls['contact_no'].invalid && (editSubagentForm.controls['contact_no'].dirty ||  editSubagentForm.controls['contact_no'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['contact_no'].errors.required">
+                                                        Phone Number is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-group-filled">
+                                                <label>User Email *</label>
+                                                <input placeholder="User Email" class="form-control valid" name="email"
+                                                       type="email" formControlName="email" #email>
+                                                <div *ngIf="editSubagentForm.controls['email'].invalid && (editSubagentForm.controls['email'].dirty ||  editSubagentForm.controls['email'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['email'].errors.required">
+                                                        email is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group form-group-filled">
+                                                <label>Password *</label>
+                                                <input placeholder="Password" class="form-control valid" name="pswd"
+                                                       type="password" formControlName="pswd" #pswd>
+                                                <div *ngIf="editSubagentForm.controls['pswd'].invalid && (editSubagentForm.controls['pswd'].dirty ||  editSubagentForm.controls['pswd'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['pswd'].errors.required">
+                                                        banking type is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <p><img src="{{profile_picture}}"></p>
+                                                <label>profile picture * <b>{{profileName}}</b> </label>
+                                                <button class="btn btn-info btn-block" type="button" #upload
+                                                        (click)="fileInput.click()">
+                                                    <i class="fa fa-upload"></i>&nbsp;&nbsp;
+                                                    <span class="bold">Upload Photo</span></button>
+                                                <input type="file" name="profile_picture" (change)="fileChange($event)"
+                                                       #fileInput
+                                                       formControlName="profile_picture" style="display: none;"/>
+                                                <div *ngIf="editSubagentForm.controls['profile_picture'].invalid && (editSubagentForm.controls['profile_picture'].dirty ||  editSubagentForm.controls['profile_picture'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['profile_picture'].errors.required">
+                                                        profile picture is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label> License Number *</label>
+                                                <input placeholder="Trade License Number" class="form-control"
+                                                       name="licence_number" type="text"
+                                                       formControlName="licence_number" #licence_number>
+                                                <div *ngIf="editSubagentForm.controls['licence_number'].invalid && (editSubagentForm.controls['licence_number'].dirty ||  editSubagentForm.controls['licence_number'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['licence_number'].errors.required">
+                                                        License Number is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!--<div class="form-group">-->
+                                                <!--<p><img src="{{licence_picture}}"></p>-->
+                                                <!--<label>license picture * <b>{{licenseName}}</b></label>-->
+                                                <!--<button class="btn btn-info btn-block" type="button"-->
+                                                        <!--(click)="fileInputLiesense.click()">-->
+                                                    <!--<i class="fa fa-upload"></i>&nbsp;&nbsp;-->
+                                                    <!--<span class="bold">Upload Photo</span></button>-->
+                                                <!--<input type="file" name="license_picture" (change)="fileChangeLiesense($event)" #fileInputLiesense formControlName="license_picture" style="display: none;"/>-->
+                                                <!--<div *ngIf="editSubagentForm.controls['license_picture'].invalid && (editSubagentForm.controls['license_picture'].dirty ||  editSubagentForm.controls['license_picture'].touched)"-->
+                                                     <!--class="text-danger">-->
+                                                    <!--<div *ngIf="editSubagentForm.controls['license_picture'].errors.required">-->
+                                                        <!--license picture is required.-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                            <div class="form-group">
+                                                <label>Choose Currency *</label>
+                                                <select class="form-control valid" formControlName="currency_code" #currency_code>
+                                                    <option value="" selected>Select currency</option>
+                                                    <option *ngFor="let currency of currencyArray" [value]="currency.currency_code">{{currency.currency_code}}</option>
+                                                </select>
+                                                <div *ngIf="editSubagentForm.controls['currency_code'].invalid && (editSubagentForm.controls['currency_code'].dirty ||  editSubagentForm.controls['currency_code'].touched)"
+                                                     class="text-danger">
+                                                    <div *ngIf="editSubagentForm.controls['currency_code'].errors.required">
+                                                        currency_code is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="submit" class="bt_n"
+                                                        (click)="editSubagentClick(company.value, iata.value, no_branch.value, c_person.value, c_designation.value, c_email.value, c_phone.value, o_address.value, o_city.value,
+                                                         o_pin.value, contact_no.value, email.value, pswd.value,  licence_number.value,  currency_code.value)">
+                                                    Add Profile
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<app-footer></app-footer>

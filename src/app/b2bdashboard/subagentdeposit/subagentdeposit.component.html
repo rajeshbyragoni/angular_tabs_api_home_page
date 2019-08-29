@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="dashboard">
+	<div class="container">
+		<div class="col-md-3">
+			<app-b2bsidebar></app-b2bsidebar>
+		</div>
+		<div class="col-md-9">
+			<div class="tbnew">
+				<h1>Deposit Management</h1>
+				<div class="tbl_m">          
+					<div class="table-responsive">          
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>SL No</th>
+									<th>Transaction ID</th>
+									<th>Date</th>
+									<th>Amount</th>
+									<th>Service Charge</th>
+									<th>Remarks </th>
+									<th>Status </th>
+									<th>Approve </th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let data of depAmount; index as i">
+									<td>{{ i + 1}}</td>
+									<td>{{ data.deposit_number}}</td>
+									<td>{{ data.cheque_date}}</td>
+									<td>{{ data.last_credit}}$</td>
+									<td>{{ (data.balance_credit - data.last_credit) }}$</td>
+									<td>{{ data.remarks}}</td>
+									<td>{{ data.status }}</td>
+
+									<td *ngIf="data.status !== 'PENDING' ">
+										<select (change)="activate($event);" disabled>
+											<option value="http://192.168.1.12/travel2plan/dashboard/update_deposit_status/2/ACCEPTED/4" selected="">ACCEPTED</option>
+											<option value="http://192.168.1.12/travel2plan/dashboard/update_deposit_status/2/PENDING/4">PENDING</option>
+											<option value="http://192.168.1.12/travel2plan/dashboard/update_deposit_status/2/DECLINED/4">DECLINED</option>
+										</select>
+									</td>
+									<td *ngIf="data.status === 'PENDING' ">
+										<select (change)="activate(this.value);">
+											<option value="http://192.168.1.12/travel2plan/dashboard/update_deposit_status/2/ACCEPTED/4" selected="">ACCEPTED</option>
+											<option value="http://192.168.1.12/travel2plan/dashboard/update_deposit_status/2/PENDING/4">PENDING</option>
+											<option value="http://192.168.1.12/travel2plan/dashboard/update_deposit_status/2/DECLINED/4">DECLINED</option>
+										</select>
+									</td>
+								</tr>
+
+						</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<app-footer></app-footer>

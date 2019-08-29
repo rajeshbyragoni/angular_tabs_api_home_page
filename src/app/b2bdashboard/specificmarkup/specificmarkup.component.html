@@ -1,0 +1,241 @@
+<app-header></app-header>
+<app-header></app-header>
+<div class="dashboard">
+	<div class="container">
+		<div class="col-md-3">
+			<app-b2bsidebar></app-b2bsidebar>
+		</div>
+
+		<div class="col-md-9">
+			<div class="tbnew">
+				<div class="col-md-12">
+					<h4>Specific Markup</h4>
+					<div class="tabbable">
+						<ul class="nav nav-tabs" id="myTab">
+							<li class=""><a href="#add_amrkup" data-toggle="tab">Add Markup</a>
+							</li>
+							<li class="active"><a href="#view_markup" data-toggle="tab">View Markup</a>
+							</li>
+
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="view_markup">
+								<p class="mt10">
+								</p><div class="form-group">
+									<label>Product </label>
+									<select (change)="getSpecificProduct($event.target.value)" id="markup_type" name="markup_type" class="form-control typecodeans notypmar valid choose_product" #markup_type>
+										<option value="">--Choose Product--</option>
+										<option *ngFor="let prct of products" value="{{prct.product_id}}">{{prct.product_name}}</option>
+										
+									</select>
+
+								</div>
+								<p></p>
+
+								<div id="specfic_markup_table" style="display:none;">
+									
+								</div>
+
+								<div id="specfic_markup_table2" style="display:none;">
+									
+								</div>
+
+
+							</div>
+
+
+							<div class="tab-pane fade" id="add_amrkup">
+								<p class="mt10">
+								</p><div class="col-md-8">
+									<form [formGroup] = "specificForm">
+
+										<div class="form-group">
+											<label>User *</label>
+											<select name="user" class="form-control typecodeans notypmar valid" formControlName="user" #user>
+												<option value=""> -select user- </option>
+												<option *ngFor="let user of user_details" value="{{user.user_id}}">{{user.user_email}}</option>
+												
+											</select>
+											<div *ngIf="specificForm.controls['user'].invalid && (specificForm.controls['user'].dirty ||  specificForm.controls['user'].touched)"
+											class="text-danger">
+											<div *ngIf="specificForm.controls['user'].errors.required">
+												user is required.
+											</div>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label>Product</label>
+										<select id="specific_product_id" name="product_id" class="product_change_specifi form-control typecodeans notypmar valid" formControlName="product_id" #product_id>
+											<option value="">--Choose Product--</option>
+											<option value="1">FLIGHT</option>
+											<option value="2">HOTEL</option>
+										</select>
+										<div
+										*ngIf="specificForm.controls['product_id'].invalid && (specificForm.controls['product_id'].dirty ||  specificForm.controls['product_id'].touched)"
+										class="text-danger">
+										<div *ngIf="specificForm.controls['product_id'].errors.required">
+											Product is required.
+										</div>
+									</div>
+								</div>
+								<div id="specific_api"></div>
+								<input type="hidden" name="hidden_api_val" id="hidden_api_val">
+
+								<div id="hotel_data" style="display:none;">
+									<div class="form-group" id="country_city_div">
+										<label>Country</label>
+
+										  <select class="form-control" formControlName="country" (change)="countryChange(country.value)" #country>
+                                <option value="" selected="">Select Country</option>
+                                <option *ngFor="let city of countryArray" [value]="city.country_code">{{city.country_name}}</option>
+                            </select>
+										<div *ngIf="specificForm.controls['country'].invalid && (specificForm.controls['country'].dirty ||  specificForm.controls['country'].touched)"
+										class="text-danger">
+										<div *ngIf="specificForm.controls['country'].errors.required">
+											Country is required.
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="form-group" id="citylist">
+								<label>City</label>
+
+								<div id="cities_specific">
+								</div>
+							</div>
+
+
+							<div class="form-group" id="specific_hotel_name" style="display:none;">
+								<label>Hotel List</label>
+
+								<div id="specific_hotel_list">
+								</div>
+							</div>
+
+							<div class="form-group" id="specific_hotel_name_loh" style="display:none;">
+
+								<label>Hotel List</label>
+
+								<div id="specific_hotel_list_loh">
+								</div>
+							</div>
+
+							<div id="flight_data" style="display:none;">
+								<div class="form-group">
+									<label>Airline List</label>
+
+									<select name="airline[]" class="form-control typecodeans notypmar" formControlName="airline" #airline> 
+										<option value="JP">Adria Airways</option>
+										<option value="RE">Aer Arann Express</option>
+										<option value="EI">Aer Lingus</option>
+										<option value="JR">Aero California</option>
+										<option value="SU">Aeroflot Airlines</option>
+
+									</select>
+									<div *ngIf="specificForm.controls['airline'].invalid && (specificForm.controls['airline'].dirty ||  specificForm.controls['airline'].touched)"
+									class="text-danger">
+									<div *ngIf="specificForm.controls['airline'].errors.required">
+										Airline List required.
+									</div>
+								</div>
+
+							</div>
+
+
+							<div class="form-group">
+								<label>Flight Type</label>
+
+								<select  name="flight_type" class="form-control typecodeans notypmar" formControlName="flight_type" #flight_type>
+									<option value=" ">Choose Flight Type</option>
+									<option value="domestic">Domestic</option>
+									<option value="international">International</option>
+
+								</select>
+								<div
+								*ngIf="specificForm.controls['flight_type'].invalid && (specificForm.controls['flight_type'].dirty ||  specificForm.controls['flight_type'].touched)"
+								class="text-danger">
+								<div *ngIf="specificForm.controls['flight_type'].errors.required">
+									flight_type is required.
+								</div>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+
+							<label>Class</label>
+
+							<select name="first" class="form-control typecodeans notypmar" formControlName="first" #first>
+								<option value=" ">Choose Class</option>
+								<option value="All">All</option>
+								<option value="F">First, Supersonic</option>
+								<option value="C">Business</option>
+								<option value="Y">Economic</option>
+								<option value="W">Premium Economy</option>
+								<option value="M">Standard Economy</option>
+							</select>
+							<div *ngIf="specificForm.controls['first'].invalid && (specificForm.controls['first'].dirty ||  specificForm.controls['first'].touched)"
+							class="text-danger">
+							<div *ngIf="specificForm.controls['first'].errors.required">
+								class is required.
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="form-group">
+					<label>Current Markup</label>
+
+					<input min="0" max="100" required="" name="Markup" class="form-control typecodeans notypmar valid" formControlName="Markup" #Markup>
+
+					<input value="SPECIFIC" name="type" class="typecodeans notypmar" type="hidden">
+					<div *ngIf="specificForm.controls['Markup'].invalid && (specificForm.controls['Markup'].dirty ||  specificForm.controls['Markup'].touched)"
+					class="text-danger">
+					<div *ngIf="specificForm.controls['Markup'].errors.required">
+						Current Markup is required.
+					</div>
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label>Markup Type</label>
+				<select name="markup_type" class="form-control typecodeans notypmar valid" formControlName="markup_type" #markup_type>
+					<option value="">Choose Markup Type</option>
+					<option value="percentage">Percentage</option>
+					<option value="amount" selected="">Amount</option>
+				</select>
+				<div *ngIf="specificForm.controls['markup_type'].invalid && (specificForm.controls['markup_type'].dirty ||  specificForm.controls['markup_type'].touched)"
+				class="text-danger">
+				<div *ngIf="specificForm.controls['markup_type'].errors.required">
+					Markup Type is required.
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+
+			<button name="save_hotel" id="update_markup" type="submit" class="bt_n" (click)="specificClick(user.value, product_id.value, country.value, airline.value, flight_type.value, first.value, Markup.value, markup_type.value)">
+
+			Add Markup</button>
+		</div>
+
+	</form>
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<app-footer></app-footer>

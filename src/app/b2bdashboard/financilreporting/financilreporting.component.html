@@ -1,0 +1,117 @@
+<app-header></app-header>
+<div class="dashboard">
+    <div class="container">
+        <div class="col-md-3">
+            <app-b2bsidebar></app-b2bsidebar>
+        </div>
+        <div class="col-md-9">
+            <div role="tabpanel" class="tab-pane" id="tab3">
+                <div class="tbnew">
+                    <h1>View Finance Statement</h1>
+                    <div (click)="isCollapsed2 = !isCollapsed2"
+                         [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseExample2">
+                        <h5 class="fltrm">Filter <i class="fa fa-angle-down pull-right"></i></h5>
+                    </div>
+                    <div id="collapseExample2" [ngbCollapse]="isCollapsed2">
+                        <div class="card">
+                            <div class="card-body">
+                                <form>
+                                    <div class="row row-wrap">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Product</label>
+                                                <select class="form-control">
+                                                    <option>HOTEL</option>
+                                                    <option>FLIGHT</option>
+                                                </select>
+                                            </div>
+                                            <input class="bt_n" type="submit" value="Search Booking" role="button">
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label>Booking Status</label>
+                                                <select class="form-control">
+                                                    <option>CONFIRMED</option>
+                                                    <option>CANCELLED</option>
+                                                </select>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Booking Status</label>
+                                                <select class="form-control">
+                                                    <option>CONFIRMED</option>
+                                                    <option>CANCELLED</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tbnew">
+
+                        <div class="row">
+                            <div class="tbl_m">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>SL No</th>
+                                            <th>Actions</th>
+                                            <th>Booking Date</th>
+                                            <th>Booking Confirm No.</th>
+                                            <th>Booking NO.</th>
+                                            <th>Booking Status</th>
+                                            <th>Ticket Number</th>
+                                            <th>Ticket status</th>
+                                            <th>Total Amount</th>
+                                            <th>Base Fare</th>
+                                            <th>Discount</th>
+                                            <th>Payment Status</th>
+                                            <th>Promocode</th>
+                                            <th>Api Name</th>
+                                            <th>Ip Address</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr *ngFor="let data of  reportData; index as i">
+                                            <td>{{i+1}}</td>
+                                            <td><input type="checkbox" name="sel_opt[]" id="sel_opt[]" value="3"></td>
+                                            <td>{{data.booking_time | date: 'dd/MM/yyyy' }}</td>
+                                            <td>{{ data.api_confirmation_no ? data.api_confirmation_no : 'Null'}}</td>
+                                            <td>{{data.booking_no}}</td>
+                                            <td>{{data.booking_status}}</td>
+                                            <td>{{data.pnr_no}}</td>
+                                            <td>{{data.ticketing_status}}</td>
+                                            <td>{{ 'data.booking_data' }}</td>
+                                            <td>1.00</td>
+                                            <td>1.00</td>
+                                            <td>{{data.transaction_status}}</td>
+                                            <td>0</td>
+                                            <td>ONURAIR</td>
+                                            <td>{{data.ip_address}}</td>
+
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
